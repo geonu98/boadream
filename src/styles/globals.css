@@ -9487,3 +9487,332 @@ main:has(.care-guide-steps-section) + .site-footer-care::before {
 .footer-legal {
   border-top: 1px solid rgba(255, 240, 229, 0.16);
 }
+/* Mobile Rescue Overrides */
+@media (max-width: 768px) {
+  :root {
+    --container-padding: 16px;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .section,
+  .page-shell,
+  .service-page-shell,
+  .service-process-section,
+  .service-verification-section,
+  .care-guide-grade-section,
+  .care-guide-steps-section,
+  .pricing-steps-section,
+  .recruit-steps-section,
+  .site-footer-care {
+    padding-top: 60px;
+    padding-bottom: 72px;
+  }
+
+  .site-header {
+    padding-top: 14px;
+  }
+
+  .nav-shell-dropdown {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 14px;
+    border-radius: 22px;
+  }
+
+  .brand-mark {
+    justify-self: start;
+  }
+
+  .brand-copy {
+    font-size: 1.05rem;
+  }
+
+  .main-nav-dropdown {
+    width: 100%;
+    justify-self: stretch;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 8px;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .main-nav-dropdown::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-dropdown {
+    flex: 0 0 auto;
+  }
+
+  .nav-dropdown-trigger {
+    min-height: 40px;
+    padding: 0 14px;
+    font-size: 0.92rem;
+    white-space: nowrap;
+  }
+
+  .nav-caret,
+  .nav-dropdown-menu {
+    display: none !important;
+  }
+
+  .nav-shell-dropdown .nav-actions {
+    grid-column: auto;
+    justify-content: stretch;
+  }
+
+  .nav-cta-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-section-typography {
+    padding-top: 28px;
+  }
+
+  .hero-section-typography .hero-grid {
+    min-height: auto;
+  }
+
+  .hero-section-typography .hero-left,
+  .hero-section-typography .hero-left-centered {
+    padding: 34px 0 24px;
+  }
+
+  .hero-section-typography .hero-title {
+    font-size: clamp(2.5rem, 12vw, 4rem);
+    line-height: 0.98;
+  }
+
+  .hero-section-typography .hero-title-soft,
+  .hero-section-typography .hero-title-strong {
+    display: block;
+  }
+
+  .hero-section-typography .hero-subtitle {
+    margin-top: 20px;
+    font-size: 1rem;
+  }
+
+  .hero-section-typography .hero-cta-button {
+    width: 100%;
+    max-width: 320px;
+    min-height: 52px;
+    padding: 0 22px;
+  }
+
+  .hero-decor-heart,
+  .hero-decor-leaf,
+  .hero-decor-flower,
+  .hero-decor-cross,
+  .hero-decor-bloom {
+    opacity: 0.32;
+  }
+
+  .page-shell .section-title,
+  .service-page-title,
+  .service-process-section .section-title,
+  .service-verification-section .section-title,
+  .care-guide-intro-title .section-title,
+  .care-guide-grade-title,
+  .care-guide-steps-title,
+  .faq-page-title .section-title,
+  .notice-page-title .section-title,
+  .recruit-page-title,
+  .pricing-page .section-title,
+  .benefit-editorial-title,
+  .service-section-title,
+  .home-faq-heading .section-title,
+  .review-marquee-head h2 {
+    font-size: clamp(2rem, 9vw, 3rem) !important;
+    line-height: 1.08;
+  }
+
+  .page-lead,
+  .page-copy,
+  .hero-section-typography .hero-description,
+  .review-marquee-head p,
+  .home-faq-lead,
+  .service-page-lead,
+  .care-guide-summary,
+  .care-guide-copy-left,
+  .contact-panel-lead,
+  .pricing-step-copy p,
+  .recruit-step-copy p {
+    font-size: 0.98rem !important;
+    line-height: 1.7 !important;
+  }
+
+  .page-card-grid,
+  .contact-grid,
+  .service-dashboard-grid,
+  .service-process-grid,
+  .service-verification-grid,
+  .care-guide-hero,
+  .care-guide-support-grid,
+  .care-guide-grade-grid,
+  .care-guide-steps-grid,
+  .footer-care-grid-location,
+  .pricing-step-panel,
+  .recruit-step-panel {
+    grid-template-columns: 1fr !important;
+  }
+
+  .page-card,
+  .faq-item,
+  .contact-panel,
+  .service-metric-card,
+  .service-process-card,
+  .service-verification-card,
+  .footer-location-card,
+  .review-slide-card {
+    border-radius: 22px;
+  }
+
+  .page-card,
+  .contact-panel,
+  .service-metric-card,
+  .service-process-card,
+  .service-verification-card,
+  .care-guide-cost-card,
+  .footer-location-card {
+    padding: 22px;
+  }
+
+  .service-dashboard-grid,
+  .service-process-grid,
+  .service-verification-grid,
+  .page-card-grid,
+  .care-guide-steps-grid {
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  .service-metric-card,
+  .service-process-card,
+  .service-verification-card,
+  .care-guide-step-card,
+  .care-guide-grade-card,
+  .care-guide-support-card {
+    min-height: auto !important;
+  }
+
+  .service-care-icon-grid {
+    gap: 10px;
+  }
+
+  .service-care-icon-card {
+    padding: 14px 8px;
+  }
+
+  .service-care-heart-copy strong {
+    font-size: 2rem;
+  }
+
+  .service-care-checklist-icon {
+    width: 110px;
+    height: 110px;
+  }
+
+  .service-care-checklist-icon svg {
+    width: 58px;
+    height: 58px;
+  }
+
+  .step-tabs,
+  .pricing-step-tabs {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .step-tab {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .step-visual,
+  .pricing-step-visual,
+  .recruit-step-visual {
+    min-height: 280px !important;
+  }
+
+  .glass-mini-card,
+  .pricing-glass-card,
+  .recruit-glass-card {
+    inset: auto 14px 14px 14px !important;
+    width: auto !important;
+    padding: 22px 18px;
+  }
+
+  .review-marquee-window {
+    margin-top: 22px;
+    padding-bottom: 68px;
+  }
+
+  .review-slide-card {
+    flex-basis: 270px;
+  }
+
+  .home-faq-actions,
+  .footer-care-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .home-faq-actions .footer-kakao-button,
+  .home-faq-actions .home-faq-contact-button,
+  .footer-phone-button,
+  .footer-kakao-button,
+  .footer-blog-button,
+  .footer-map-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .footer-care-grid-location {
+    gap: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-copy {
+    font-size: 0.98rem;
+  }
+
+  .hero-section-typography .hero-title {
+    font-size: clamp(2.2rem, 11vw, 3.2rem);
+  }
+
+  .hero-section-typography .hero-subtitle {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .service-care-icon-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-care-chip-group,
+  .service-care-checks {
+    gap: 8px;
+  }
+
+  .service-care-chip-group span,
+  .service-care-checks span {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .review-slide-card {
+    flex-basis: 232px;
+  }
+}
