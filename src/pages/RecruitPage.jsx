@@ -103,7 +103,7 @@ export default function RecruitPage() {
                   <div className="glass-mini-card recruit-glass-card recruit-glass-card-static">
                     <h3>채용안내</h3>
                     <span>따뜻한 마음으로 내 부모처럼 모실 요양보호사님을 모집합니다.</span>
-                    <button type="button">많은 지원 부탁드립니다</button>
+                    <a href="tel:023520088">전화로 지원 문의하기</a>
                   </div>
                 </div>
               </div>

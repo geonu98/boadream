@@ -9816,3 +9816,175 @@ main:has(.care-guide-steps-section) + .site-footer-care::before {
     flex-basis: 232px;
   }
 }
+/* Mobile Header Compact Mode */
+@media (max-width: 768px) {
+  .site-header {
+    position: static;
+    padding-top: 8px;
+    background: transparent;
+  }
+
+  .nav-shell-dropdown {
+    gap: 8px;
+    padding: 10px 12px;
+    border-radius: 18px;
+  }
+
+  .brand-mark {
+    gap: 8px;
+  }
+
+  .brand-mark-image {
+    width: 26px;
+    height: 26px;
+  }
+
+  .brand-copy {
+    font-size: 0.96rem;
+  }
+
+  .main-nav-dropdown {
+    gap: 6px;
+    padding-bottom: 0;
+  }
+
+  .nav-dropdown-trigger {
+    min-height: 34px;
+    padding: 0 12px;
+    font-size: 0.86rem;
+  }
+
+  .nav-shell-dropdown .nav-actions {
+    display: none;
+  }
+
+  .hero-section,
+  .hero-section-typography {
+    padding-top: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-shell-dropdown {
+    padding: 8px 10px;
+  }
+
+  .brand-copy {
+    font-size: 0.9rem;
+  }
+
+  .nav-dropdown-trigger {
+    min-height: 32px;
+    padding: 0 10px;
+    font-size: 0.82rem;
+  }
+}
+/* Mobile Collapsible Header */
+.nav-mobile-toggle {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .nav-shell-dropdown {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+  }
+
+  .nav-mobile-toggle {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    border: 1px solid rgba(104, 96, 77, 0.12);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 8px 20px rgba(104, 96, 77, 0.08);
+  }
+
+  .nav-mobile-toggle-bar {
+    width: 18px;
+    height: 2px;
+    margin: 0 auto;
+    border-radius: 999px;
+    background: #68604d;
+    transition: transform 180ms ease, opacity 180ms ease;
+  }
+
+  .site-header.is-mobile-open .nav-mobile-toggle-bar:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+
+  .site-header.is-mobile-open .nav-mobile-toggle-bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .site-header.is-mobile-open .nav-mobile-toggle-bar:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+
+  .main-nav-dropdown {
+    display: none;
+    grid-column: 1 / -1;
+    width: 100%;
+    margin-top: 4px;
+    padding-top: 6px;
+  }
+
+  .site-header.is-mobile-open .main-nav-dropdown {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    overflow: visible;
+  }
+
+  .nav-dropdown {
+    width: 100%;
+  }
+
+  .nav-dropdown-trigger {
+    width: 100%;
+    justify-content: space-between;
+    min-height: 42px;
+    padding: 0 14px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.58);
+    white-space: normal;
+  }
+
+  .nav-shell-dropdown .nav-actions {
+    display: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-mobile-toggle {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+  }
+}
+/* Glass Card Link Buttons */
+.glass-mini-card a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 46px;
+  margin-top: 20px;
+  border-radius: 12px;
+  color: var(--color-white);
+  background: var(--color-accent);
+}
+
+.glass-mini-card a:hover {
+  transform: none;
+  background: var(--color-accent);
+}
+
+.recruit-glass-card-static a,
+.pricing-glass-card-static a {
+  cursor: pointer;
+}

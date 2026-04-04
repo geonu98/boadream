@@ -19,6 +19,7 @@ const pricingTabs = [
     cardTitle: "이용 금액 안내",
     cardText: "복잡한 기준 대신 실제 이용에 필요한 내용을 차근차근 설명해드립니다.",
     buttonLabel: "상담 후 상세 비용 안내",
+    buttonHref: "/contact",
   },
   {
     id: "pricing-point",
@@ -37,6 +38,7 @@ const pricingTabs = [
     cardTitle: "상담 포인트",
     cardText: "처음 문의하셔도 필요한 내용부터 빠르게 짚어드립니다.",
     buttonLabel: "방문요양 · 방문목욕 모두 문의 가능",
+    buttonHref: "/contact",
   },
   {
     id: "pricing-call",
@@ -55,6 +57,7 @@ const pricingTabs = [
     cardTitle: "대표 상담",
     cardText: "전화로 가장 빠르게 확인하실 수 있습니다.",
     buttonLabel: "TEL 02-352-0088",
+    buttonHref: "tel:023520088",
   },
 ];
 
@@ -110,7 +113,7 @@ export default function PricingPage() {
                   <div className="glass-mini-card pricing-glass-card pricing-glass-card-static">
                     <h3>{currentTab.cardTitle}</h3>
                     <span>{currentTab.cardText}</span>
-                    <button type="button">{currentTab.buttonLabel}</button>
+                    <a href={currentTab.buttonHref}>{currentTab.buttonLabel}</a>
                   </div>
                 </div>
               </div>

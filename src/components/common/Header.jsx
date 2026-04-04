@@ -1,4 +1,5 @@
 ﻿import { Link, NavLink, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 import Button from "./Button";
 
 const headerNav = [
@@ -42,6 +43,11 @@ const headerNav = [
 
 export default function Header() {
   const location = useLocation();
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
+
+  useEffect(() => {
+    setIsMobileOpen(false);
+  }, [location.pathname, location.hash]);
 
   const isMenuActive = (item) => {
     if (location.pathname === item.href) {
@@ -52,7 +58,7 @@ export default function Header() {
   };
 
   return (
-    <header className="site-header">
+    <header className={`site-header${isMobileOpen ? " is-mobile-open" : ""}`}>
       <div className="container nav-shell nav-shell-dropdown">
         <Link className="brand-mark" to="/" aria-label="보아드림노인복지센터 홈">
           <span className="brand-flower" aria-hidden="true">
@@ -61,7 +67,19 @@ export default function Header() {
           <span className="brand-copy">보아드림노인복지센터</span>
         </Link>
 
-        <nav className="main-nav main-nav-dropdown" aria-label="Primary">
+        <button
+          type="button"
+          className="nav-mobile-toggle"
+          aria-expanded={isMobileOpen}
+          aria-controls="primary-navigation"
+          onClick={() => setIsMobileOpen((open) => !open)}
+        >
+          <span className="nav-mobile-toggle-bar"></span>
+          <span className="nav-mobile-toggle-bar"></span>
+          <span className="nav-mobile-toggle-bar"></span>
+        </button>
+
+        <nav id="primary-navigation" className="main-nav main-nav-dropdown" aria-label="Primary">
           {headerNav.map((item) => (
             <div
               key={item.label}
