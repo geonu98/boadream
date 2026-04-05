@@ -1,6 +1,10 @@
-import NoticeCard from "./NoticeCard";
+﻿import NoticeCard from "./NoticeCard";
 
-export default function NoticeList({ items }) {
+export default function NoticeList({ items = [] }) {
+  if (!items.length) {
+    return <p className="notice-empty-state">등록된 공지사항이 없습니다.</p>;
+  }
+
   return (
     <section className="notice-board reveal-up" aria-label="공지사항 목록">
       <div className="notice-board-head" role="row">

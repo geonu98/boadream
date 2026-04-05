@@ -1,7 +1,16 @@
-﻿import FaqList from "../faq/FaqList";
-import { faqs } from "../../data/faqs";
+﻿import { useQuery } from "@tanstack/react-query";
+import FaqList from "../faq/FaqList";
+import { faqService } from "../../features/faqs/api/faqService";
+import Button from "../common/Button";
 
 export default function ContactSection() {
+  const faqsQuery = useQuery({
+    queryKey: ["public-faqs"],
+    queryFn: faqService.listPublishedFaqs,
+  });
+
+  const previewFaqs = (faqsQuery.data || []).slice(0, 5);
+
   return (
     <section className="section page-shell home-faq-section" id="faq-preview">
       <div className="container-medium">
@@ -15,17 +24,26 @@ export default function ContactSection() {
           </p>
         </div>
 
-        <div className="reveal-up home-faq-list-wrap">
-          <FaqList items={faqs.slice(0, 5)} />
-        </div>
+        {faqsQuery.isLoading ? <p className="notice-page-status">FAQ를 불러오는 중입니다.</p> : null}
+        {faqsQuery.isError ? (
+          <p className="notice-page-status is-error">
+            {faqsQuery.error instanceof Error ? faqsQuery.error.message : "FAQ를 불러오지 못했습니다."}
+          </p>
+        ) : null}
+
+        {!faqsQuery.isLoading && !faqsQuery.isError ? (
+          <div className="reveal-up home-faq-list-wrap">
+            <FaqList items={previewFaqs} />
+          </div>
+        ) : null}
 
         <div className="home-faq-actions reveal-up">
-          <a className="button button-solid button-small footer-kakao-button" href="/faq">
+          <Button className="footer-kakao-button" href="/faq" variant="solid" size="small">
             FAQ 전체보기
-          </a>
-          <a className="button button-outline button-small home-faq-contact-button" href="/contact">
+          </Button>
+          <Button className="home-faq-contact-button" href="/contact" variant="outline" size="small">
             상담 신청하기
-          </a>
+          </Button>
         </div>
       </div>
     </section>
