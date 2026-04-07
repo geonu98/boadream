@@ -9,14 +9,14 @@ export default function FacilitySection() {
   });
 
   const visibleReviews = reviewsQuery.data || [];
-  const marqueeReviews = visibleReviews.length ? [...visibleReviews, ...visibleReviews] : [];
+  const marqueeReviews = visibleReviews.length >= 4 ? [...visibleReviews, ...visibleReviews] : visibleReviews;
 
   return (
     <section className="section section-split section-review-marquee" id="stories">
       <div className="container">
-        <div className="review-marquee-head reveal-up">
-          <h2>이용 후기</h2>
-          <p>
+        <div className="section-title-wrap reveal-up review-marquee-heading">
+          <h2 className="section-title">이용 후기</h2>
+          <p className="page-lead review-marquee-lead">
             보아드림노인복지센터를 이용한 어르신과 보호자분들의 실제 경험을 바탕으로,
             돌봄 과정에서 느낀 변화와 만족을 소개합니다.
           </p>
@@ -29,7 +29,35 @@ export default function FacilitySection() {
           </p>
         ) : null}
 
-        {!reviewsQuery.isLoading && !reviewsQuery.isError && marqueeReviews.length ? (
+        {!reviewsQuery.isLoading && !reviewsQuery.isError && visibleReviews.length >= 1 && visibleReviews.length <= 3 ? (
+          <div className="review-featured-grid reveal-up">
+            {visibleReviews.map((review) => {
+              const imageUrl = getReviewImageUrl(review.photo_path);
+              const initial = getReviewInitial(review.author_name);
+
+              return (
+                <article key={review.id} className="review-featured-card">
+                  <div className="review-avatar-shell review-featured-avatar" aria-hidden="true">
+                    {imageUrl ? (
+                      <img className="review-avatar-photo" src={imageUrl} alt="" />
+                    ) : (
+                      <div className="review-avatar-ring">
+                        <div className="review-avatar-circle">{initial}</div>
+                      </div>
+                    )}
+                  </div>
+                  <div className="review-slide-copy review-featured-copy">
+                    <strong>{review.author_name}</strong>
+                    <span>{review.author_label || "이용 후기"}</span>
+                    <p>{review.body}</p>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        ) : null}
+
+        {!reviewsQuery.isLoading && !reviewsQuery.isError && visibleReviews.length >= 4 ? (
           <div className="review-marquee-window reveal-up">
             <div className="review-marquee-track">
               {marqueeReviews.map((review, index) => {
@@ -61,6 +89,10 @@ export default function FacilitySection() {
               })}
             </div>
           </div>
+        ) : null}
+
+        {!reviewsQuery.isLoading && !reviewsQuery.isError && visibleReviews.length === 0 ? (
+          <p className="notice-empty-state reveal-up">홈에 노출된 후기가 아직 없습니다.</p>
         ) : null}
       </div>
     </section>

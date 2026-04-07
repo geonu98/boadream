@@ -1,7 +1,7 @@
 ﻿import { useQuery } from "@tanstack/react-query";
 import NoticeList from "../components/notice/NoticeList";
+import Button from "../components/common/Button";
 import { noticeService } from "../features/notices/api/noticeService";
-import SectionTitle from "../components/common/SectionTitle";
 
 export default function NoticePage() {
   const noticesQuery = useQuery({
@@ -13,12 +13,15 @@ export default function NoticePage() {
     <main className="notice-page">
       <section className="section page-shell">
         <div className="container-medium">
-          <SectionTitle
-            eyebrow="(공지사항)"
-            title="센터 소식과"
-            highlight="안내 내용을 확인하세요"
-            className="notice-page-title"
-          />
+          <div className="section-title-wrap reveal-up home-notice-heading notice-page-title">
+            <h2 className="section-title">
+              공지사항
+              <span>센터 소식과 최신 안내를 먼저 확인해보세요</span>
+            </h2>
+            <p className="page-lead home-notice-lead">
+              서비스 운영 안내, 휴무 공지, 이용 관련 변경 사항을 빠르게 전달드립니다.
+            </p>
+          </div>
 
           {noticesQuery.isLoading ? <p className="notice-page-status">공지사항을 불러오는 중입니다.</p> : null}
           {noticesQuery.isError ? (
@@ -29,6 +32,15 @@ export default function NoticePage() {
             </p>
           ) : null}
           {!noticesQuery.isLoading && !noticesQuery.isError ? <NoticeList items={noticesQuery.data || []} /> : null}
+
+          <div className="home-notice-actions reveal-up">
+            <Button href="/notice" variant="solid" size="small">
+              공지사항 전체보기
+            </Button>
+            <Button href="/contact" variant="outline" size="small">
+              상담 신청하기
+            </Button>
+          </div>
         </div>
       </section>
     </main>

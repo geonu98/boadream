@@ -7,7 +7,12 @@ export default function MainLayout() {
   const location = useLocation();
 
   useEffect(() => {
-    const revealTargets = document.querySelectorAll(".reveal-up, .reveal-left, .reveal-right");
+    const revealSelector = ".reveal-up, .reveal-left, .reveal-right";
+    const observeTarget = (target) => {
+      if (!(target instanceof Element)) return;
+      if (target.classList.contains("is-visible")) return;
+      observer.observe(target);
+    };
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -23,9 +28,27 @@ export default function MainLayout() {
       },
     );
 
-    revealTargets.forEach((target) => observer.observe(target));
+    document.querySelectorAll(revealSelector).forEach(observeTarget);
 
-    return () => observer.disconnect();
+    const mutationObserver = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        mutation.addedNodes.forEach((node) => {
+          if (!(node instanceof Element)) return;
+          if (node.matches(revealSelector)) observeTarget(node);
+          node.querySelectorAll?.(revealSelector).forEach(observeTarget);
+        });
+      });
+    });
+
+    mutationObserver.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
+
+    return () => {
+      mutationObserver.disconnect();
+      observer.disconnect();
+    };
   }, [location.pathname]);
 
   useEffect(() => {

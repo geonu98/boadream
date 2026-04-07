@@ -13,6 +13,20 @@ export async function listPublishedFaqs() {
   return unwrapResult(result, "FAQ 목록을 불러오지 못했습니다.");
 }
 
+export async function listFeaturedHomeFaqs() {
+  const client = requireSupabase();
+  const result = await client
+    .from("faqs")
+    .select("*")
+    .eq("is_published", true)
+    .eq("show_on_home", true)
+    .order("display_order", { ascending: true })
+    .order("created_at", { ascending: false })
+    .limit(4);
+
+  return unwrapResult(result, "홈 FAQ 목록을 불러오지 못했습니다.");
+}
+
 export async function listAdminFaqs() {
   const client = requireSupabase();
   const result = await client

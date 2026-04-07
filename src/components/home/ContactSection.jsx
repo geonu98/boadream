@@ -5,11 +5,11 @@ import Button from "../common/Button";
 
 export default function ContactSection() {
   const faqsQuery = useQuery({
-    queryKey: ["public-faqs"],
-    queryFn: faqService.listPublishedFaqs,
+    queryKey: ["home-faqs"],
+    queryFn: faqService.listFeaturedHomeFaqs,
   });
 
-  const previewFaqs = (faqsQuery.data || []).slice(0, 5);
+  const previewFaqs = faqsQuery.data || [];
 
   return (
     <section className="section page-shell home-faq-section" id="faq-preview">

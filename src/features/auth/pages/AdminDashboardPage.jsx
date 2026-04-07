@@ -51,7 +51,7 @@ export default function AdminDashboardPage() {
     {
       label: "FAQ",
       value: faqs.length,
-      note: `공개 ${faqs.filter((item) => item.is_published).length}건`,
+      note: `홈 상위노출 ${faqs.filter((item) => item.show_on_home).length}건`,
       tone: "neutral",
     },
     {

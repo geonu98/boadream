@@ -13,6 +13,7 @@ const initialValues = {
   answer: "",
   display_order: 0,
   is_published: true,
+  show_on_home: false,
 };
 
 export default function AdminFaqFormPage() {
@@ -47,17 +48,28 @@ export default function AdminFaqFormPage() {
         answer: faqQuery.data.answer ?? "",
         display_order: faqQuery.data.display_order ?? 0,
         is_published: faqQuery.data.is_published ?? true,
+        show_on_home: faqQuery.data.show_on_home ?? false,
       });
     }
   }, [faqQuery.data, reset]);
 
   const saveMutation = useMutation({
     mutationFn: async (values) => {
+      const allFaqs = await faqService.listAdminFaqs();
+      const featuredCount = allFaqs.filter(
+        (faq) => faq.show_on_home && (!isEditMode || faq.id !== faqId),
+      ).length;
+
+      if (values.show_on_home && featuredCount >= 4 && !(faqQuery.data?.show_on_home ?? false)) {
+        throw new Error("홈 상위노출 FAQ는 최대 4개까지만 선택할 수 있습니다.");
+      }
+
       const payload = {
         question: values.question.trim(),
         answer: values.answer.trim(),
         display_order: Number(values.display_order) || 0,
         is_published: Boolean(values.is_published),
+        show_on_home: Boolean(values.show_on_home),
       };
 
       if (isEditMode) {
@@ -69,6 +81,7 @@ export default function AdminFaqFormPage() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["admin-faqs"] });
       queryClient.invalidateQueries({ queryKey: ["public-faqs"] });
+      queryClient.invalidateQueries({ queryKey: ["home-faqs"] });
       navigate("/admin/faqs", { replace: true });
     },
   });
@@ -76,6 +89,7 @@ export default function AdminFaqFormPage() {
   const questionValue = watch("question") ?? "";
   const answerValue = watch("answer") ?? "";
   const isPublishedValue = watch("is_published");
+  const showOnHomeValue = watch("show_on_home");
 
   const onSubmit = handleSubmit((values) => {
     saveMutation.mutate(values);
@@ -87,7 +101,7 @@ export default function AdminFaqFormPage() {
         <div>
           <p className="admin-page-eyebrow">FAQ Editor</p>
           <h2>{isEditMode ? "FAQ 수정" : "FAQ 등록"}</h2>
-          <p className="admin-page-description">질문, 답변, 노출 순서를 입력하고 공개 여부를 설정하세요.</p>
+          <p className="admin-page-description">질문, 답변, 노출 순서와 홈 상위노출 여부를 설정하세요.</p>
         </div>
         <div className="admin-page-header-actions">
           <Button href="/admin/faqs" variant="outline" size="small">
@@ -108,7 +122,7 @@ export default function AdminFaqFormPage() {
           <div className={`admin-form-callout${isDirty ? " is-dirty" : ""}`}>
             <div>
               <strong>{isEditMode ? "기존 FAQ를 수정 중입니다." : "새 FAQ를 작성 중입니다."}</strong>
-              <p>답변은 줄바꿈 그대로 노출됩니다. 공개 상태로 저장하면 FAQ 페이지와 홈 미리보기에 바로 반영됩니다.</p>
+              <p>답변은 줄바꿈 그대로 노출됩니다. 홈 상위노출을 켜면 메인 FAQ에 최대 4개까지 반영됩니다.</p>
             </div>
             <div className="admin-form-callout-badges">
               <span className={`admin-form-callout-badge${isDirty ? " is-dirty" : " is-idle"}`}>
@@ -116,6 +130,9 @@ export default function AdminFaqFormPage() {
               </span>
               <span className={`admin-form-callout-badge${isPublishedValue ? " is-published" : " is-draft"}`}>
                 {isPublishedValue ? "공개" : "비공개"}
+              </span>
+              <span className={`admin-form-callout-badge${showOnHomeValue ? " is-featured" : " is-idle"}`}>
+                {showOnHomeValue ? "홈 상위노출" : "일반 노출"}
               </span>
             </div>
           </div>
@@ -141,6 +158,15 @@ export default function AdminFaqFormPage() {
                 <strong>즉시 공개</strong>
               </label>
               <small className="admin-form-help">비공개로 저장하면 운영 확인 후 나중에 공개할 수 있습니다.</small>
+            </div>
+
+            <div className="admin-form-field admin-checkbox-field">
+              <span>홈 상위노출</span>
+              <label className="admin-checkbox-control">
+                <input type="checkbox" {...register("show_on_home")} />
+                <strong>메인 FAQ에 노출</strong>
+              </label>
+              <small className="admin-form-help">홈 화면에는 상위노출 FAQ만 최대 4개까지 보여집니다.</small>
             </div>
           </div>
 
@@ -183,7 +209,7 @@ export default function AdminFaqFormPage() {
           ) : null}
 
           <div className="admin-form-footer">
-            <p className="admin-form-actions-note">저장하면 목록으로 돌아갑니다. 공개 상태면 사용자 FAQ와 홈 미리보기에 바로 반영됩니다.</p>
+            <p className="admin-form-actions-note">저장하면 목록으로 돌아갑니다. 공개 상태와 홈 상위노출 여부에 따라 FAQ 페이지와 메인 화면에 반영됩니다.</p>
             <div className="admin-form-actions">
               <Button type="submit" variant="solid" size="small" disabled={saveMutation.isPending}>
                 {saveMutation.isPending ? "저장 중..." : isEditMode ? "수정 저장" : "FAQ 등록"}

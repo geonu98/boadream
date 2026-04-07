@@ -14,6 +14,7 @@ export default function AdminFaqListPage() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["admin-faqs"] });
       queryClient.invalidateQueries({ queryKey: ["public-faqs"] });
+      queryClient.invalidateQueries({ queryKey: ["home-faqs"] });
     },
   });
 
@@ -31,7 +32,7 @@ export default function AdminFaqListPage() {
         <div>
           <p className="admin-page-eyebrow">FAQs</p>
           <h2>FAQ 관리</h2>
-          <p className="admin-page-description">자주 묻는 질문과 답변, 노출 순서를 관리할 수 있습니다.</p>
+          <p className="admin-page-description">자주 묻는 질문과 답변, 노출 순서와 홈 상위노출 여부를 관리할 수 있습니다.</p>
         </div>
         <div className="admin-page-header-actions">
           <Button href="/admin/faqs/new" variant="solid" size="small">
@@ -53,13 +54,14 @@ export default function AdminFaqListPage() {
             faqsQuery.data.map((faq) => (
               <article key={faq.id} className="admin-faq-card">
                 <div className="admin-faq-head">
-                  <div>
-                    <div className="admin-faq-badges">
-                      <span className="admin-faq-order">순서 {faq.display_order}</span>
-                      <span className={`admin-faq-visibility${faq.is_published ? " is-published" : " is-draft"}`}>
-                        {faq.is_published ? "공개" : "비공개"}
-                      </span>
-                    </div>
+                    <div>
+                      <div className="admin-faq-badges">
+                        <span className="admin-faq-order">순서 {faq.display_order}</span>
+                        <span className={`admin-faq-visibility${faq.is_published ? " is-published" : " is-draft"}`}>
+                          {faq.is_published ? "공개" : "비공개"}
+                        </span>
+                        {faq.show_on_home ? <span className="admin-review-home-badge">홈 상위노출</span> : null}
+                      </div>
                     <h3>{faq.question}</h3>
                     <p>{faq.answer}</p>
                   </div>

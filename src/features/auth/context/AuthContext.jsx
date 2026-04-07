@@ -1,6 +1,6 @@
 ﻿import { createContext, useContext, useEffect, useState } from "react";
 import { authService } from "../api/authService";
-import { requireSupabase } from "../../../shared/lib/supabase/client";
+import { supabase } from "../../../shared/lib/supabase/client";
 
 const AuthContext = createContext(null);
 
@@ -16,7 +16,16 @@ export function AuthProvider({ children }) {
   const [authState, setAuthState] = useState(initialState);
 
   useEffect(() => {
-    const client = requireSupabase();
+    if (!supabase) {
+      setAuthState({
+        session: null,
+        user: null,
+        profile: null,
+        isAdmin: false,
+        isLoading: false,
+      });
+      return undefined;
+    }
 
     const refreshAuthState = async () => {
       try {
@@ -59,7 +68,7 @@ export function AuthProvider({ children }) {
 
     const {
       data: { subscription },
-    } = client.auth.onAuthStateChange(() => {
+    } = supabase.auth.onAuthStateChange(() => {
       refreshAuthState();
     });
 
@@ -67,6 +76,10 @@ export function AuthProvider({ children }) {
   }, []);
 
   const login = async ({ email, password }) => {
+    if (!supabase) {
+      throw new Error("Supabase 환경변수가 없어 관리자 로그인을 사용할 수 없습니다.");
+    }
+
     await authService.signInAdmin({ email, password });
     const profile = await authService.getCurrentAdminProfile();
 
@@ -88,6 +101,17 @@ export function AuthProvider({ children }) {
   };
 
   const logout = async () => {
+    if (!supabase) {
+      setAuthState({
+        session: null,
+        user: null,
+        profile: null,
+        isAdmin: false,
+        isLoading: false,
+      });
+      return;
+    }
+
     await authService.signOutAdmin();
     setAuthState({
       session: null,
