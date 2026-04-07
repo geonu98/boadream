@@ -1,4 +1,6 @@
-﻿export default function IntroSection() {
+import ServiceSection from "./ServiceSection";
+
+export default function IntroSection() {
   return (
     <section className="section section-benefits section-benefits-editorial" id="benefits">
       <div className="container benefit-editorial-shell reveal-up">
@@ -24,6 +26,8 @@
             <span>전문 교육 이수</span>
             <span>재가 복지 전문</span>
           </div>
+
+          <ServiceSection />
 
           <div className="benefit-editorial-actions">
             <a href="/service" className="button button-dark">

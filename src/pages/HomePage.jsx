@@ -1,18 +1,14 @@
-﻿import ContactSection from "../components/home/ContactSection";
-import FacilitySection from "../components/home/FacilitySection";
+import ContactSection from "../components/home/ContactSection";
 import HeroSection from "../components/home/HeroSection";
 import IntroSection from "../components/home/IntroSection";
-import NoticePreviewSection from "../components/home/NoticePreviewSection";
-import ServiceSection from "../components/home/ServiceSection";
+import StoriesSection from "../components/home/StoriesSection";
 
 export default function HomePage() {
   return (
     <main>
       <HeroSection />
       <IntroSection />
-      <ServiceSection />
-      <NoticePreviewSection />
-      <FacilitySection />
+      <StoriesSection />
       <ContactSection />
     </main>
   );

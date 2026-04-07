@@ -1,4 +1,5 @@
-﻿import { Link, NavLink, useLocation } from "react-router-dom";
+
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Button from "./Button";
 import KakaoConsultButton from "./KakaoConsultButton";
@@ -42,6 +43,14 @@ const headerNav = [
   },
 ];
 
+function PhoneGlyph() {
+  return (
+    <svg className="nav-cta-phone" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M7.2 4.5h2.1l1.1 3.1-1.6 1.5a14 14 0 0 0 6.4 6.4l1.5-1.6 3.1 1.1v2.1c0 .7-.5 1.3-1.2 1.4a16.8 16.8 0 0 1-13.6-13.6c.1-.7.7-1.2 1.4-1.2Z" fill="currentColor" />
+    </svg>
+  );
+}
+
 export default function Header() {
   const location = useLocation();
   const [isMobileOpen, setIsMobileOpen] = useState(false);
@@ -58,9 +67,37 @@ export default function Header() {
     return item.children?.some((child) => location.pathname === child.href) ?? false;
   };
 
+  const isHome = location.pathname === "/";
+
+  const homeHeaderStyle = isHome
+    ? {
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 120,
+        paddingTop: "12px",
+        background: "transparent",
+        pointerEvents: "none",
+      }
+    : undefined;
+
+  const homeNavShellStyle = isHome
+    ? {
+        position: "relative",
+        width: "min(calc(100vw - 28px), calc(var(--container-max) + (var(--container-padding) * 2)))",
+        margin: "0 auto",
+        background: "rgba(255, 255, 255, 0.92)",
+        boxShadow: "0 16px 34px rgba(98, 79, 62, 0.12)",
+        backdropFilter: "blur(14px)",
+        WebkitBackdropFilter: "blur(14px)",
+        pointerEvents: "auto",
+      }
+    : undefined;
+
   return (
-    <header className={`site-header${isMobileOpen ? " is-mobile-open" : ""}`}>
-      <div className="container nav-shell nav-shell-dropdown">
+    <header className={`site-header${isMobileOpen ? " is-mobile-open" : ""}`} style={homeHeaderStyle}>
+      <div className="container nav-shell nav-shell-dropdown" style={homeNavShellStyle}>
         <Link className="brand-mark" to="/" aria-label="보아드림노인복지센터 홈">
           <span className="brand-flower" aria-hidden="true">
             <img className="brand-mark-image" src="/boadream-mark.png" alt="" />
@@ -88,7 +125,7 @@ export default function Header() {
             >
               <NavLink to={item.href} className="nav-dropdown-trigger">
                 <span>{item.label}</span>
-                {item.children ? <span className="nav-caret" aria-hidden="true">▾</span> : null}
+                {item.children ? <span className="nav-caret" aria-hidden="true"></span> : null}
               </NavLink>
 
               {item.children ? (
@@ -109,13 +146,12 @@ export default function Header() {
         </nav>
 
         <div className="nav-actions">
-          <KakaoConsultButton variant="outline" size="small" className="nav-kakao-button">
-            <span className="nav-cta-icon" aria-hidden="true">톡</span>
-            <span>카카오 상담</span>
-          </KakaoConsultButton>
-          <Button href="/contact" variant="solid" size="small" className="nav-cta-button">
-            <span className="nav-cta-icon" aria-hidden="true">☎</span>
-            <span>상담 문의하기</span>
+          <KakaoConsultButton variant="outline" size="small" className="nav-kakao-button" readyLabel="카톡상담" pendingLabel="카톡상담" />
+          <Button href="/contact" variant="solid" size="small" className="nav-cta-button nav-cta-button-compact">
+            <span className="nav-cta-icon" aria-hidden="true">
+              <PhoneGlyph />
+            </span>
+            <span>상담문의</span>
           </Button>
         </div>
       </div>

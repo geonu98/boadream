@@ -56,10 +56,11 @@ export default function Footer() {
       </div>
 
       <div className="container footer-legal">
-        <p>사업자등록번호: 000-00-00000 | 대표: OOO</p>
+        <p>사업자등록번호: 000-00-00000 | 대표: 김자영</p>
         <p>주소: 서울특별시 은평구 통일로 780 상가동3층4호 | TEL: 02-352-0088</p>
         <p>© 2026 보아드림노인복지센터. All rights reserved.</p>
       </div>
     </footer>
   );
 }
+
