@@ -1,4 +1,6 @@
-﻿export default function Footer() {
+﻿import KakaoConsultButton from "./KakaoConsultButton";
+
+export default function Footer() {
   return (
     <footer className="site-footer site-footer-care" id="footer">
       <div className="container footer-care-grid footer-care-grid-location">
@@ -23,9 +25,7 @@
             <a className="button button-solid button-small footer-phone-button" href="tel:023520088">
               전화 상담: 02-352-0088
             </a>
-            <a className="button button-outline button-small footer-kakao-button" href="/contact">
-              상담 신청 바로가기
-            </a>
+            <KakaoConsultButton variant="outline" size="small" className="footer-kakao-button" />
             <a
               className="button button-outline button-small footer-blog-button"
               href="https://blog.naver.com/boacare9988"

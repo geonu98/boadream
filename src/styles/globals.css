@@ -11563,3 +11563,70 @@ main:has(.care-guide-steps-section) + .site-footer-care::before {
     justify-content: start;
   }
 }
+
+.kakao-consult-button.is-ready {
+  border-color: #f4d24d;
+  background: #f4d24d;
+  color: #4f3a00;
+  box-shadow: 0 12px 24px rgba(244, 210, 77, 0.22);
+}
+
+.kakao-consult-button.is-ready:hover {
+  border-color: #e5c33f;
+  background: #e5c33f;
+  color: #4f3a00;
+}
+
+.kakao-consult-button.is-pending {
+  border-style: dashed;
+}
+
+.nav-kakao-button {
+  min-height: 48px;
+  padding: 0 22px;
+  border-radius: 16px;
+}
+
+.contact-card-action-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.contact-card-action {
+  min-height: 46px;
+  border-radius: 14px;
+  font-weight: 700;
+}
+
+.contact-kakao-action.kakao-consult-button.is-ready {
+  border-color: #f4d24d;
+  background: #f4d24d;
+  color: #4f3a00;
+}
+
+.contact-kakao-action.kakao-consult-button.is-pending {
+  border-color: rgba(122, 128, 99, 0.28);
+  color: #6d715d;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.contact-card-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.contact-card-cta-row .button {
+  flex: 1 1 180px;
+}
+
+@media (max-width: 900px) {
+  .nav-kakao-button,
+  .contact-card-action,
+  .contact-card-cta-row .button {
+    width: 100%;
+    justify-content: center;
+  }
+}

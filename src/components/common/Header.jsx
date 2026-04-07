@@ -1,6 +1,7 @@
 ﻿import { Link, NavLink, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Button from "./Button";
+import KakaoConsultButton from "./KakaoConsultButton";
 
 const headerNav = [
   {
@@ -108,6 +109,10 @@ export default function Header() {
         </nav>
 
         <div className="nav-actions">
+          <KakaoConsultButton variant="outline" size="small" className="nav-kakao-button">
+            <span className="nav-cta-icon" aria-hidden="true">톡</span>
+            <span>카카오 상담</span>
+          </KakaoConsultButton>
           <Button href="/contact" variant="solid" size="small" className="nav-cta-button">
             <span className="nav-cta-icon" aria-hidden="true">☎</span>
             <span>상담 문의하기</span>
