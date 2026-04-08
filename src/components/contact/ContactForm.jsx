@@ -1,4 +1,4 @@
-﻿import { zodResolver } from "@hookform/resolvers/zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -70,6 +70,27 @@ export default function ContactForm() {
     inquiryMutation.mutate(values);
   });
 
+  const renderMeta = ({ error, hint, count, spacer = false }) => {
+    if (error) {
+      return <small className="contact-field-error">{error}</small>;
+    }
+
+    if (hint || count) {
+      return (
+        <div className="contact-field-meta">
+          <small className="contact-field-hint">{hint}</small>
+          <small className="contact-char-count">{count}</small>
+        </div>
+      );
+    }
+
+    if (spacer) {
+      return <div className="contact-field-meta contact-field-meta--spacer" aria-hidden="true" />;
+    }
+
+    return null;
+  };
+
   return (
     <form className="contact-form" onSubmit={onSubmit} ref={formRef} noValidate>
       <div className="contact-form-grid">
@@ -83,7 +104,7 @@ export default function ContactForm() {
             aria-invalid={Boolean(errors.name)}
             {...register("name")}
           />
-          {errors.name ? <small className="contact-field-error">{errors.name.message}</small> : null}
+          {renderMeta({ error: errors.name?.message, spacer: true })}
         </label>
 
         <label className={`contact-field${errors.phone ? " has-error" : ""}`}>
@@ -97,14 +118,11 @@ export default function ContactForm() {
             aria-invalid={Boolean(errors.phone)}
             {...register("phone")}
           />
-          {errors.phone ? (
-            <small className="contact-field-error">{errors.phone.message}</small>
-          ) : (
-            <div className="contact-field-meta">
-              <small className="contact-field-hint">숫자만 적어도 접수됩니다.</small>
-              <small className="contact-char-count">{phoneDigits >= 7 ? `${phoneDigits}자리 입력됨` : "최소 7자리"}</small>
-            </div>
-          )}
+          {renderMeta({
+            error: errors.phone?.message,
+            hint: "숫자만 적어도 접수됩니다.",
+            count: phoneDigits >= 7 ? `${phoneDigits}자리 입력됨` : "최소 7자리",
+          })}
         </label>
 
         <label className={`contact-field${errors.service_type ? " has-error" : ""}`}>
@@ -115,9 +133,7 @@ export default function ContactForm() {
             <option>이용 절차 안내</option>
             <option>기타 문의</option>
           </select>
-          {errors.service_type ? (
-            <small className="contact-field-error">{errors.service_type.message}</small>
-          ) : null}
+          {renderMeta({ error: errors.service_type?.message, spacer: true })}
         </label>
 
         <label className={`contact-field${errors.care_grade ? " has-error" : ""}`}>
@@ -130,9 +146,7 @@ export default function ContactForm() {
             <option>3~5등급</option>
             <option>인지지원등급</option>
           </select>
-          {errors.care_grade ? (
-            <small className="contact-field-error">{errors.care_grade.message}</small>
-          ) : null}
+          {renderMeta({ error: errors.care_grade?.message, spacer: true })}
         </label>
       </div>
 

@@ -30,9 +30,8 @@ export default function IntroSection() {
           <ServiceSection />
 
           <div className="benefit-editorial-actions">
-            <a href="/service" className="button button-dark">
+            <a href="/service" className="button button-outline benefit-editorial-link">
               서비스안내 자세히 보기
-              <img src="/boadream-mark.png" alt="" className="button-mark-image" aria-hidden="true" />
             </a>
           </div>
         </div>

@@ -1,6 +1,5 @@
-
-import { Link, NavLink, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import Button from "./Button";
 import KakaoConsultButton from "./KakaoConsultButton";
 
@@ -8,10 +7,7 @@ const headerNav = [
   {
     label: "센터소개",
     href: "/about",
-    children: [
-      { label: "센터 인사말", href: "/about" },
-      { label: "시설/환경 안내", href: "/facility" },
-    ],
+    children: [{ label: "센터 인사말", href: "/about" }],
   },
   {
     label: "서비스안내",
@@ -19,7 +15,7 @@ const headerNav = [
     children: [
       { label: "방문요양 서비스", href: "/service" },
       { label: "방문목욕 서비스", href: "/bath" },
-      { label: "서비스 이용 절차", href: "/service" },
+      { label: "서비스 이용 대상", href: "/service" },
     ],
   },
   {
@@ -69,35 +65,9 @@ export default function Header() {
 
   const isHome = location.pathname === "/";
 
-  const homeHeaderStyle = isHome
-    ? {
-        position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 120,
-        paddingTop: "12px",
-        background: "transparent",
-        pointerEvents: "none",
-      }
-    : undefined;
-
-  const homeNavShellStyle = isHome
-    ? {
-        position: "relative",
-        width: "min(calc(100vw - 28px), calc(var(--container-max) + (var(--container-padding) * 2)))",
-        margin: "0 auto",
-        background: "rgba(255, 255, 255, 0.92)",
-        boxShadow: "0 16px 34px rgba(98, 79, 62, 0.12)",
-        backdropFilter: "blur(14px)",
-        WebkitBackdropFilter: "blur(14px)",
-        pointerEvents: "auto",
-      }
-    : undefined;
-
   return (
-    <header className={`site-header${isMobileOpen ? " is-mobile-open" : ""}`} style={homeHeaderStyle}>
-      <div className="container nav-shell nav-shell-dropdown" style={homeNavShellStyle}>
+    <header className={`site-header${isHome ? " site-header-home" : ""}${isMobileOpen ? " is-mobile-open" : ""}`}>
+      <div className={`container nav-shell nav-shell-dropdown${isHome ? " nav-shell-home-fixed" : ""}`}>
         <Link className="brand-mark" to="/" aria-label="보아드림노인복지센터 홈">
           <span className="brand-flower" aria-hidden="true">
             <img className="brand-mark-image" src="/boadream-mark.png" alt="" />
@@ -146,7 +116,13 @@ export default function Header() {
         </nav>
 
         <div className="nav-actions">
-          <KakaoConsultButton variant="outline" size="small" className="nav-kakao-button" readyLabel="카톡상담" pendingLabel="카톡상담" />
+          <KakaoConsultButton
+            variant="outline"
+            size="small"
+            className="nav-kakao-button"
+            readyLabel="카톡상담"
+            pendingLabel="카톡상담"
+          />
           <Button href="/contact" variant="solid" size="small" className="nav-cta-button nav-cta-button-compact">
             <span className="nav-cta-icon" aria-hidden="true">
               <PhoneGlyph />

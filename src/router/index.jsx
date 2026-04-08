@@ -1,4 +1,4 @@
-﻿import { Navigate, createBrowserRouter } from "react-router-dom";
+import { Navigate, createBrowserRouter } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
 import AdminLayout from "../layouts/AdminLayout";
 import AdminRoute from "../features/auth/guards/AdminRoute";
@@ -16,7 +16,6 @@ import AboutPage from "../pages/AboutPage";
 import BathPage from "../pages/BathPage";
 import ContactPage from "../pages/ContactPage";
 import DirectionsPage from "../pages/DirectionsPage";
-import FacilityPage from "../pages/FacilityPage";
 import FaqPage from "../pages/FaqPage";
 import HomePage from "../pages/HomePage";
 import LongTermCarePage from "../pages/LongTermCarePage";
@@ -39,7 +38,6 @@ const router = createBrowserRouter([
       { path: "faq", element: <FaqPage /> },
       { path: "review", element: <ReviewPage /> },
       { path: "contact", element: <ContactPage /> },
-      { path: "facility", element: <FacilityPage /> },
       { path: "directions", element: <DirectionsPage /> },
       { path: "bath", element: <BathPage /> },
       { path: "pricing", element: <PricingPage /> },

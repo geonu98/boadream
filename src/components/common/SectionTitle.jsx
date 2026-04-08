@@ -1,4 +1,4 @@
-﻿export default function SectionTitle({ eyebrow, title, highlight, align = "center", className = "" }) {
+﻿export default function SectionTitle({ eyebrow: _eyebrow, title, highlight, align = "center", className = "" }) {
   const wrapperClassName = `${
     align === "left"
       ? "section-title-wrap section-title-left"
@@ -7,7 +7,6 @@
 
   return (
     <div className={wrapperClassName}>
-      {eyebrow ? <p className="pre-title">{eyebrow}</p> : null}
       <h2 className="section-title">
         {title} {highlight ? <span>{highlight}</span> : null}
       </h2>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import Button from "../common/Button";
@@ -83,6 +83,10 @@ export default function StoriesSection() {
 
   const notices = (noticesQuery.data || []).slice(0, 4);
   const reviews = (reviewsQuery.data || []).slice(0, 4);
+  const reviewItems = useMemo(() => reviews.map((review, index) => ({
+    ...review,
+    cardImageUrl: getReviewImageUrl(review.photo_path) || (index === 0 ? "/hero-care-photo.png" : ""),
+  })), [reviews]);
 
   useEffect(() => {
     if (!reviews.length) {
@@ -91,26 +95,26 @@ export default function StoriesSection() {
     }
 
     setActiveReviewIndex((current) => (current >= reviews.length ? 0 : current));
-  }, [reviews.length]);
+  }, [reviewItems.length]);
 
   useEffect(() => {
-    if (reviews.length <= 1) {
+    if (reviewItems.length <= 1) {
       return undefined;
     }
 
     const timer = window.setInterval(() => {
-      setActiveReviewIndex((current) => getWrappedIndex(current + 1, reviews.length));
-    }, 4800);
+      setActiveReviewIndex((current) => getWrappedIndex(current + 1, reviewItems.length));
+    }, 6800);
 
     return () => window.clearInterval(timer);
-  }, [reviews.length]);
+  }, [reviewItems.length]);
 
   const moveReview = (direction) => {
-    setActiveReviewIndex((current) => getWrappedIndex(current + direction, reviews.length));
+    setActiveReviewIndex((current) => getWrappedIndex(current + direction, reviewItems.length));
   };
 
   const jumpToReview = (index) => {
-    setActiveReviewIndex(getWrappedIndex(index, reviews.length));
+    setActiveReviewIndex(getWrappedIndex(index, reviewItems.length));
   };
 
   return (
@@ -174,15 +178,15 @@ export default function StoriesSection() {
             ) : null}
 
             {!reviewsQuery.isLoading && !reviewsQuery.isError ? (
-              reviews.length ? (
+              reviewItems.length ? (
                 <div className="home-stories-review-slider">
                   <div className="home-stories-review-viewport">
                     <div
                       className="home-stories-review-track"
                       style={{ transform: `translate3d(-${activeReviewIndex * 100}%, 0, 0)` }}
                     >
-                      {reviews.map((review) => {
-                        const imageUrl = getReviewImageUrl(review.photo_path);
+                      {reviewItems.map((review) => {
+                        const imageUrl = review.cardImageUrl;
                         const initial = getReviewInitial(review.author_name);
 
                         return (
@@ -224,10 +228,10 @@ export default function StoriesSection() {
                   </div>
 
                   <div className="home-stories-review-footer">
-                    {reviews.length > 1 ? (
+                    {reviewItems.length > 1 ? (
                       <div className="home-stories-review-navigation">
                         <div className="home-stories-review-dots" aria-label={COPY.reviewTitle}>
-                          {reviews.map((review, index) => (
+                          {reviewItems.map((review, index) => (
                             <button
                               key={review.id}
                               type="button"

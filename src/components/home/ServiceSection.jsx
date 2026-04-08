@@ -21,16 +21,16 @@ const SERVICES = [
   },
 ];
 
-function ServiceCard({ icon: Icon, title, description }) {
+function ServiceCard({ icon: Icon, title, description, index }) {
   return (
-    <article className="home-service-strip-card reveal-up">
-      <div className="home-service-strip-icon" aria-hidden="true">
-        <Icon size={30} strokeWidth={1.7} />
-      </div>
-      <div className="home-service-strip-copy">
+    <article className={`home-service-strip-card reveal-up${index > 0 ? " has-divider" : ""}`}>
+      <div className="home-service-strip-head">
+        <div className="home-service-strip-icon" aria-hidden="true">
+          <Icon size={28} strokeWidth={1.65} />
+        </div>
         <h3>{title}</h3>
-        <p>{description}</p>
       </div>
+      <p>{description}</p>
     </article>
   );
 }
@@ -39,12 +39,13 @@ export default function ServiceSection() {
   return (
     <div className="home-service-strip-inline" aria-label="주요 서비스">
       <div className="home-service-strip-grid home-service-strip-grid-inline">
-        {SERVICES.map((service) => (
+        {SERVICES.map((service, index) => (
           <ServiceCard
             key={service.title}
             icon={service.icon}
             title={service.title}
             description={service.description}
+            index={index}
           />
         ))}
       </div>

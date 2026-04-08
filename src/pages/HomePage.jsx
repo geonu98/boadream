@@ -5,7 +5,7 @@ import StoriesSection from "../components/home/StoriesSection";
 
 export default function HomePage() {
   return (
-    <main>
+    <main className="home-page">
       <HeroSection />
       <IntroSection />
       <StoriesSection />
