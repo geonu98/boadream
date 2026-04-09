@@ -14,7 +14,7 @@ export default function IntroSection() {
           <span className="benefit-editorial-kicker">Our Philosophy</span>
           <h2 className="benefit-editorial-title">
             자립을 돕는 돌봄,
-            <span>보아드림의 진심입니다.</span>
+            <span>보아드림의 진심입니다</span>
           </h2>
           <p className="benefit-editorial-body">
             무조건 대신해드리기보다, 어르신이 스스로 하실 수 있는 부분은 끝까지 지켜드리고

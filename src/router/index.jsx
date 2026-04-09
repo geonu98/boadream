@@ -13,7 +13,6 @@ import NoticeDetailPage from "../features/notices/pages/NoticeDetailPage";
 import AdminReviewFormPage from "../features/reviews/pages/AdminReviewFormPage";
 import AdminReviewListPage from "../features/reviews/pages/AdminReviewListPage";
 import AboutPage from "../pages/AboutPage";
-import BathPage from "../pages/BathPage";
 import ContactPage from "../pages/ContactPage";
 import DirectionsPage from "../pages/DirectionsPage";
 import FaqPage from "../pages/FaqPage";
@@ -33,13 +32,13 @@ const router = createBrowserRouter([
       { index: true, element: <HomePage /> },
       { path: "about", element: <AboutPage /> },
       { path: "service", element: <ServicePage /> },
+      { path: "bath", element: <Navigate to="/service" replace /> },
       { path: "notice", element: <NoticePage /> },
       { path: "notice/:slug", element: <NoticeDetailPage /> },
       { path: "faq", element: <FaqPage /> },
       { path: "review", element: <ReviewPage /> },
       { path: "contact", element: <ContactPage /> },
       { path: "directions", element: <DirectionsPage /> },
-      { path: "bath", element: <BathPage /> },
       { path: "pricing", element: <PricingPage /> },
       { path: "care-guide", element: <LongTermCarePage /> },
       { path: "recruit", element: <RecruitPage /> },

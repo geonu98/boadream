@@ -12,11 +12,7 @@ const headerNav = [
   {
     label: "서비스안내",
     href: "/service",
-    children: [
-      { label: "방문요양 서비스", href: "/service" },
-      { label: "방문목욕 서비스", href: "/bath" },
-      { label: "서비스 이용 대상", href: "/service" },
-    ],
+    children: [{ label: "방문요양 · 목욕", href: "/service" }],
   },
   {
     label: "장기요양안내",

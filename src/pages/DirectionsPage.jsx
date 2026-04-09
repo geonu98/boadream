@@ -1,51 +1,61 @@
-﻿import SectionTitle from "../components/common/SectionTitle";
+import SectionTitle from "../components/common/SectionTitle";
+import KakaoDirectionsMap from "../components/directions/KakaoDirectionsMap";
 
-const cards = [
-  {
-    label: "센터 위치",
-    title: "서울특별시 은평구 불광동",
-    description:
-      "상담 시 정확한 위치와 방문 가능 권역을 자세히 안내해드립니다. 전화로 먼저 문의하시면 더욱 빠르게 확인할 수 있습니다.",
-    note: "대표번호 02-352-0088",
-  },
-  {
-    label: "방문 상담",
-    title: "전화로 먼저 연결하시면 필요한 내용을 정리해드립니다",
-    description:
-      "장기요양등급 여부, 희망 서비스, 어르신 상태를 간단히 확인한 뒤 적절한 이용 방향을 설명해드립니다.",
-    note: "평일 상담 우선 운영",
-  },
-  {
-    label: "오시는 길 안내",
-    title: "대중교통 및 주변 위치 안내 가능",
-    description:
-      "센터 방문이 필요한 경우 상담 과정에서 상세 주소와 이동 방법을 함께 안내해드립니다.",
-    note: "방문 전 전화 문의 권장",
-  },
-];
+const CENTER_ADDRESS = "서울특별시 은평구 통일로 780 상가동 3층 4호";
+const WALK_GUIDE = "불광역 8번출구 기준 도보 3분";
+const PHONE_NUMBER = "02-352-0088";
+const NAVER_MAP_URL = "https://map.naver.com/p/search/%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C%20%EC%9D%80%ED%8F%89%EA%B5%AC%20%ED%86%B5%EC%9D%BC%EB%A1%9C%20780%20%EC%83%81%EA%B0%80%EB%8F%99%203%EC%B8%B5%204%ED%98%B8";
 
 export default function DirectionsPage() {
   return (
     <main>
-      <section className="section page-shell">
+      <section className="section page-shell directions-page-shell">
         <div className="container-medium">
           <SectionTitle
-            eyebrow="(찾아오시는 길)"
-            title="필요한 순간"
-            highlight="가까이에서 안내해드립니다"
+            eyebrow="(오시는 길)"
+            title="보아드림노인복지센터"
+            highlight="오시는 길"
           />
-          <p className="page-lead reveal-up">
-            전화 한 통으로 상담부터 위치 안내까지 차분하게 도와드리겠습니다.
+          <p className="page-lead reveal-up directions-page-lead">
+            지도와 기본 안내만 간단하게 확인하실 수 있도록 정리했습니다.
           </p>
-          <div className="page-card-grid reveal-up">
-            {cards.map((card) => (
-              <article key={card.title} className="page-card">
-                <span className="page-card-label">{card.label}</span>
-                <h3>{card.title}</h3>
-                <p>{card.description}</p>
-                <small>{card.note}</small>
-              </article>
-            ))}
+
+          <div className="directions-layout reveal-up">
+            <article className="directions-map-card">
+              <KakaoDirectionsMap />
+            </article>
+
+            <aside className="directions-info-card">
+              <span className="page-card-label">센터 위치 안내</span>
+              <h3>보아드림노인복지센터</h3>
+              <dl className="directions-info-list">
+                <div>
+                  <dt>주소</dt>
+                  <dd>{CENTER_ADDRESS}</dd>
+                </div>
+                <div>
+                  <dt>도보</dt>
+                  <dd>{WALK_GUIDE}</dd>
+                </div>
+                <div>
+                  <dt>대표번호</dt>
+                  <dd>{PHONE_NUMBER}</dd>
+                </div>
+              </dl>
+              <div className="directions-info-actions">
+                <a className="button button-solid button-small" href="tel:023520088">
+                  전화 연결
+                </a>
+                <a
+                  className="button button-outline button-small"
+                  href={NAVER_MAP_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  네이버지도에서 보기
+                </a>
+              </div>
+            </aside>
           </div>
         </div>
       </section>

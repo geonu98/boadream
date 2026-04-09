@@ -1,4 +1,4 @@
-﻿const cards = [
+const cards = [
   {
     label: "방문요양",
     title: "일상생활 지원이 필요한 어르신께 맞춘 돌봄",
@@ -18,6 +18,30 @@
     title: "문의부터 시작까지 차분하게 연결합니다",
     description:
       "전화 상담 후 필요 내용을 확인하고, 등급 여부와 희망 서비스를 기준으로 적합한 이용 방향을 안내드립니다.",
+    note: "대표번호 02-352-0088",
+  },
+];
+
+const bathGuideCards = [
+  {
+    label: "방문목욕 서비스",
+    title: "거동이 불편한 어르신도 편안하게 이용할 수 있도록",
+    description:
+      "신체 상태와 이동 가능 여부를 고려해 안전한 방식으로 방문목욕 서비스를 제공합니다.",
+    note: "사전 상담 후 일정 조율",
+  },
+  {
+    label: "진행 방식",
+    title: "위생과 안전을 중심에 둔 서비스 운영",
+    description:
+      "목욕 전후 어르신 컨디션을 확인하고, 무리가 가지 않도록 단계별로 진행합니다.",
+    note: "상황에 따라 보호자 동행 상담 가능",
+  },
+  {
+    label: "이용 문의",
+    title: "방문요양과 함께 상담하실 수 있습니다",
+    description:
+      "목욕 서비스만 별도로 문의하셔도 되고, 방문요양과 함께 이용 가능 여부를 함께 상담받으실 수 있습니다.",
     note: "대표번호 02-352-0088",
   },
 ];
@@ -176,7 +200,7 @@ export default function ServicePage() {
                     <path d="M34 37H42" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round"/>
                   </svg>
                 </div>
-                <span>{"체계적인 관리"}</span>
+                <span>체계적인 관리</span>
               </div>
               <h3>빠른 상담 &amp; 이용</h3>
               <p>
@@ -190,6 +214,31 @@ export default function ServicePage() {
                 <span>장기요양등급</span>
               </div>
             </article>
+          </div>
+        </div>
+      </section>
+
+      <section className="section service-bath-guide-section">
+        <div className="container service-page-container">
+          <div className="section-title-wrap section-title-left reveal-up service-process-heading">
+            <p className="pre-title">방문목욕 안내</p>
+            <h2 className="section-title service-process-title">
+              방문요양과 함께
+              <span>방문목욕도 상담하실 수 있습니다</span>
+            </h2>
+          </div>
+          <p className="page-copy reveal-up service-bath-guide-copy">
+            거동이 불편한 어르신도 안전하고 편안하게 이용하실 수 있도록, 목욕 전후 상태를 함께 확인하며 진행합니다.
+          </p>
+          <div className="page-card-grid reveal-up service-bath-guide-grid">
+            {bathGuideCards.map((card) => (
+              <article key={card.title} className="page-card service-bath-guide-card">
+                <span className="page-card-label">{card.label}</span>
+                <h3>{card.title}</h3>
+                <p>{card.description}</p>
+                <small>{card.note}</small>
+              </article>
+            ))}
           </div>
         </div>
       </section>
@@ -218,14 +267,10 @@ export default function ServicePage() {
       <section className="section service-verification-section">
         <div className="container service-page-container">
           <div className="section-title-wrap section-title-left reveal-up service-process-heading">
-      
-            <h2 className="section-title">
-              요양보호사 검증절차
-            
-            </h2>
+            <h2 className="section-title">요양보호사 검증절차</h2>
           </div>
           <p className="page-copy reveal-up service-verification-copy">
-             확실한 요양보호사 검증절차를 통해
+            확실한 요양보호사 검증절차를 통해
             어르신께서 마음에 드실 수 있게 노력합니다.
           </p>
           <div className="service-verification-grid reveal-up">
@@ -241,7 +286,3 @@ export default function ServicePage() {
     </main>
   );
 }
-
-
-
-
