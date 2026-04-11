@@ -46,10 +46,37 @@ function PhoneGlyph() {
 export default function Header() {
   const location = useLocation();
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [isNavCooling, setIsNavCooling] = useState(false);
 
   useEffect(() => {
     setIsMobileOpen(false);
+    setIsNavCooling(true);
+
+    if (document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    }
+
+    const timer = window.setTimeout(() => {
+      setIsNavCooling(false);
+    }, 360);
+
+    return () => {
+      window.clearTimeout(timer);
+    };
   }, [location.pathname, location.hash]);
+
+  const handleNavClick = (event) => {
+    setIsNavCooling(true);
+
+    requestAnimationFrame(() => {
+      if (event.currentTarget instanceof HTMLElement) {
+        event.currentTarget.blur();
+      }
+      if (document.activeElement instanceof HTMLElement) {
+        document.activeElement.blur();
+      }
+    });
+  };
 
   const isMenuActive = (item) => {
     if (location.pathname === item.href) {
@@ -62,9 +89,9 @@ export default function Header() {
   const isHome = location.pathname === "/";
 
   return (
-    <header className={`site-header${isHome ? " site-header-home" : ""}${isMobileOpen ? " is-mobile-open" : ""}`}>
+    <header className={`site-header${isHome ? " site-header-home" : ""}${isMobileOpen ? " is-mobile-open" : ""}${isNavCooling ? " is-nav-cooling" : ""}`}>
       <div className={`container nav-shell nav-shell-dropdown${isHome ? " nav-shell-home-fixed" : ""}`}>
-        <Link className="brand-mark" to="/" aria-label="보아드림노인복지센터 홈">
+        <Link className="brand-mark" to="/" aria-label="보아드림노인복지센터 홈" onClick={handleNavClick}>
           <span className="brand-flower" aria-hidden="true">
             <img className="brand-mark-image" src="/boadream-mark.png" alt="" />
           </span>
@@ -89,7 +116,7 @@ export default function Header() {
               key={item.label}
               className={`nav-dropdown${item.children ? " has-children" : ""}${isMenuActive(item) ? " is-active" : ""}`}
             >
-              <NavLink to={item.href} className="nav-dropdown-trigger">
+              <NavLink to={item.href} className="nav-dropdown-trigger" onClick={handleNavClick}>
                 <span>{item.label}</span>
                 {item.children ? <span className="nav-caret" aria-hidden="true"></span> : null}
               </NavLink>
@@ -100,6 +127,7 @@ export default function Header() {
                     <NavLink
                       key={child.label}
                       to={child.href}
+                      onClick={handleNavClick}
                       className={({ isActive }) => `nav-dropdown-item${isActive ? " is-current" : ""}`}
                     >
                       {child.label}

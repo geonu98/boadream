@@ -22,19 +22,6 @@ function ServiceCard({ icon: Icon, title, description }) {
   );
 }
 
-function ServiceDetailCard({ detailTitle, detailLines }) {
-  return (
-    <article className="home-service-detail-card reveal-up">
-      <h4>{detailTitle}</h4>
-      <div className="home-service-detail-copy">
-        {detailLines.map((line) => (
-          <p key={line}>{line}</p>
-        ))}
-      </div>
-    </article>
-  );
-}
-
 export default function ServiceSection() {
   return (
     <div className="home-service-strip-inline" aria-label="주요 서비스">
@@ -51,16 +38,6 @@ export default function ServiceSection() {
             />
           );
         })}
-      </div>
-
-      <div className="home-service-detail-grid reveal-up">
-        {homeServices.map((service) => (
-          <ServiceDetailCard
-            key={`${service.key}-detail`}
-            detailTitle={service.detailTitle}
-            detailLines={service.detailLines}
-          />
-        ))}
       </div>
     </div>
   );

@@ -17358,3 +17358,162 @@ main:has(.care-guide-steps-section) + .site-footer-care::before {
     min-height: auto;
   }
 }
+
+/* Codex: prevent nav dropdown from auto-opening right after route change */
+.site-header.is-nav-cooling .nav-dropdown {
+  pointer-events: none;
+}
+
+.site-header.is-nav-cooling .nav-dropdown-menu {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transform: translateY(10px) !important;
+}
+
+/* Codex: widen home service cards after detail block removal */
+.home-service-strip-grid-inline {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.home-service-strip-card {
+  min-height: 188px;
+  padding: 22px 22px 20px;
+}
+
+.home-service-strip-card p {
+  font-size: 0.95rem;
+  line-height: 1.78;
+}
+
+@media (max-width: 1080px) {
+  .home-service-strip-grid-inline {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .home-service-strip-grid-inline {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .home-service-strip-card {
+    min-height: auto;
+    padding: 16px 15px 15px;
+  }
+}
+
+/* Codex: bath guide cards as soft ellipses */
+.service-bath-guide-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+  align-items: stretch;
+}
+
+.service-bath-guide-card {
+  position: relative;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  min-height: 360px;
+  padding: 42px 38px 34px;
+  border-radius: 999px;
+  text-align: center;
+  background:
+    radial-gradient(circle at 30% 28%, rgba(255, 255, 255, 0.96), rgba(255, 252, 245, 0.82) 40%, rgba(246, 239, 226, 0.92) 100%);
+  border: 1px solid rgba(205, 189, 162, 0.34);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.72),
+    0 18px 34px rgba(137, 114, 83, 0.08);
+}
+
+.service-bath-guide-card::before {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(221, 207, 182, 0.32);
+  pointer-events: none;
+}
+
+.service-bath-guide-card .page-card-label {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  min-height: 36px;
+  margin-bottom: 18px;
+  border-radius: 999px;
+  background: rgba(231, 225, 208, 0.56);
+  color: #8b7a5f;
+}
+
+.service-bath-guide-card h3,
+.service-bath-guide-card p,
+.service-bath-guide-card small {
+  position: relative;
+  z-index: 1;
+}
+
+.service-bath-guide-card h3 {
+  max-width: 13ch;
+  margin: 0;
+  color: #4a4034;
+  font-size: 1.95rem;
+  line-height: 1.18;
+  letter-spacing: -0.045em;
+}
+
+.service-bath-guide-card p {
+  max-width: 26ch;
+  margin: 18px 0 0;
+  color: rgba(92, 78, 65, 0.84);
+  font-size: 1rem;
+  line-height: 1.72;
+  word-break: keep-all;
+}
+
+.service-bath-guide-card small {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 18px;
+  color: #8a7a63;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+@media (max-width: 1200px) {
+  .service-bath-guide-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .service-bath-guide-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .service-bath-guide-card {
+    min-height: auto;
+    padding: 30px 24px 28px;
+    border-radius: 34px;
+    justify-items: start;
+    text-align: left;
+  }
+
+  .service-bath-guide-card::before {
+    inset: 10px;
+    border-radius: 28px;
+  }
+
+  .service-bath-guide-card h3,
+  .service-bath-guide-card p {
+    max-width: none;
+  }
+}
