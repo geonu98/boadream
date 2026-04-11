@@ -2,6 +2,7 @@
 import NoticeList from "../components/notice/NoticeList";
 import Button from "../components/common/Button";
 import { noticeService } from "../features/notices/api/noticeService";
+import Seo from "../shared/seo/Seo";
 
 export default function NoticePage() {
   const noticesQuery = useQuery({
@@ -11,6 +12,7 @@ export default function NoticePage() {
 
   return (
     <main className="notice-page">
+      <Seo page="notice" />
       <section className="section page-shell">
         <div className="container-medium">
           <div className="section-title-wrap reveal-up home-notice-heading notice-page-title">

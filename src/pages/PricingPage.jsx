@@ -1,5 +1,6 @@
 ﻿import { useState } from "react";
 import SectionTitle from "../components/common/SectionTitle";
+import Seo from "../shared/seo/Seo";
 
 const pricingTabs = [
   {
@@ -67,6 +68,7 @@ export default function PricingPage() {
 
   return (
     <main className="pricing-page pricing-page-tabbed">
+      <Seo page="pricing" />
       <section className="section section-steps pricing-steps-section">
         <div className="container-medium">
           <SectionTitle

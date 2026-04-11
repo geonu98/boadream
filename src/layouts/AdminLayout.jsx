@@ -4,6 +4,7 @@ import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { useAuth } from "../features/auth/context/AuthContext";
 import { inquiryService } from "../features/inquiries/api/inquiryService";
 import { requireSupabase } from "../shared/lib/supabase/client";
+import Seo from "../shared/seo/Seo";
 
 const adminNavItems = [
   { label: "대시보드", to: "/admin/dashboard" },
@@ -96,6 +97,7 @@ export default function AdminLayout() {
 
   return (
     <main className="admin-shell">
+      <Seo page="admin" />
       <aside className="admin-sidebar">
         <div className="admin-sidebar-brand">
           <p className="admin-sidebar-eyebrow">Boadream</p>

@@ -1,4 +1,5 @@
 ﻿import { useState } from "react";
+import Seo from "../shared/seo/Seo";
 
 const recruitTabs = [
   {
@@ -58,6 +59,7 @@ export default function RecruitPage() {
 
   return (
     <main className="recruit-page recruit-page-tabbed">
+      <Seo page="recruit" />
       <section className="section section-steps recruit-steps-section">
         <div className="container">
           <div className="section-title-wrap section-title-left reveal-up">

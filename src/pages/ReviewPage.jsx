@@ -2,6 +2,7 @@
 import ReviewList from "../components/review/ReviewList";
 import { reviewService } from "../features/reviews/api/reviewService";
 import SectionTitle from "../components/common/SectionTitle";
+import Seo from "../shared/seo/Seo";
 
 export default function ReviewPage() {
   const reviewsQuery = useQuery({
@@ -11,6 +12,7 @@ export default function ReviewPage() {
 
   return (
     <main>
+      <Seo page="review" />
       <section className="section page-shell">
         <div className="container-medium">
           <SectionTitle

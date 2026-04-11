@@ -2,6 +2,7 @@
 import FaqList from "../components/faq/FaqList";
 import { faqService } from "../features/faqs/api/faqService";
 import SectionTitle from "../components/common/SectionTitle";
+import Seo from "../shared/seo/Seo";
 
 export default function FaqPage() {
   const faqsQuery = useQuery({
@@ -11,6 +12,7 @@ export default function FaqPage() {
 
   return (
     <main className="faq-page">
+      <Seo page="faq" />
       <section className="section page-shell">
         <div className="container-medium">
           <SectionTitle

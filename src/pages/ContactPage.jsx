@@ -1,6 +1,7 @@
 import KakaoConsultButton from "../components/common/KakaoConsultButton";
 import SectionTitle from "../components/common/SectionTitle";
 import ContactForm from "../components/contact/ContactForm";
+import Seo from "../shared/seo/Seo";
 
 const NAVER_BLOG_URL = "https://blog.naver.com/boacare9988";
 const NAVER_MAP_URL = "https://map.naver.com/p/search/%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C%20%EC%9D%80%ED%8F%89%EA%B5%AC%20%ED%86%B5%EC%9D%BC%EB%A1%9C%20780%20%EC%83%81%EA%B0%80%EB%8F%99%203%EC%B8%B5%204%ED%98%B8";
@@ -8,6 +9,7 @@ const NAVER_MAP_URL = "https://map.naver.com/p/search/%EC%84%9C%EC%9A%B8%ED%8A%B
 export default function ContactPage() {
   return (
     <main>
+      <Seo page="contact" />
       <section className="section page-shell contact-page-shell">
         <div className="container-medium">
           <SectionTitle

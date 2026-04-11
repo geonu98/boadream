@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import Button from "../components/common/Button";
 import AboutHeroSection from "../components/about/AboutHeroSection";
+import Seo from "../shared/seo/Seo";
 
 const highlights = [
   {
@@ -78,6 +79,7 @@ const mosaicCards = [
 export default function AboutPage() {
   return (
     <main className="about-page-new">
+      <Seo page="about" />
       <AboutHeroSection />
 
       <section className="section about-highlights-section">

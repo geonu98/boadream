@@ -1,4 +1,5 @@
 ﻿import { HeartHandshake, House, UserRound } from "lucide-react";
+import Seo from "../shared/seo/Seo";
 
 const supportCards = [
   {
@@ -104,6 +105,7 @@ const steps = [
 export default function LongTermCarePage() {
   return (
     <main className="care-guide-page">
+      <Seo page="careGuide" />
       <section className="section page-shell care-guide-shell">
         <section className="cgl-hero reveal-up">
           <div className="cgl-hero-top">

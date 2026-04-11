@@ -1,5 +1,6 @@
 import SectionTitle from "../components/common/SectionTitle";
 import KakaoDirectionsMap from "../components/directions/KakaoDirectionsMap";
+import Seo from "../shared/seo/Seo";
 
 const CENTER_ADDRESS = "서울특별시 은평구 통일로 780 상가동 3층 4호";
 const WALK_GUIDE = "불광역 8번출구 기준 도보 3분";
@@ -9,6 +10,7 @@ const NAVER_MAP_URL = "https://map.naver.com/p/search/%EC%84%9C%EC%9A%B8%ED%8A%B
 export default function DirectionsPage() {
   return (
     <main>
+      <Seo page="directions" />
       <section className="section page-shell directions-page-shell">
         <div className="container-medium">
           <SectionTitle

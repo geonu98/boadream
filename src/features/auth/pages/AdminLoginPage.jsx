@@ -1,6 +1,7 @@
 ﻿import { useState } from "react";
 import { useLocation, useNavigate, Navigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import Seo from "../../../shared/seo/Seo";
 
 const initialValues = {
   email: "",
@@ -50,6 +51,7 @@ export default function AdminLoginPage() {
 
   return (
     <main className="admin-auth-page">
+      <Seo page="adminLogin" />
       <section className="admin-auth-card">
         <p className="admin-auth-eyebrow">Admin Login</p>
         <h1>보아드림 관리자 로그인</h1>

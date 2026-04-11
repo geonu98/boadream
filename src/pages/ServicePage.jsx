@@ -1,3 +1,5 @@
+import Seo from "../shared/seo/Seo";
+
 const cards = [
   {
     label: "방문요양",
@@ -90,6 +92,7 @@ const verificationSteps = [
 export default function ServicePage() {
   return (
     <main className="service-page service-page-expanded service-page-care">
+      <Seo page="service" />
       <section className="section page-shell service-page-shell service-page-care-shell">
         <div className="container service-page-container">
           <div className="service-page-heading reveal-up">

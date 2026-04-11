@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import Button from "../../../components/common/Button";
 import { noticeService } from "../api/noticeService";
 import { formatNoticeDate } from "../lib/noticeUtils";
+import Seo from "../../../shared/seo/Seo";
 
 export default function NoticeDetailPage() {
   const { slug = "" } = useParams();
@@ -16,6 +17,14 @@ export default function NoticeDetailPage() {
 
   return (
     <main className="notice-detail-page">
+      <Seo
+        page="notice"
+        title={notice ? `${notice.title} | 공지사항 | 보아드림노인복지센터` : undefined}
+        description={notice?.summary || undefined}
+        ogTitle={notice ? `${notice.title} | 보아드림노인복지센터` : undefined}
+        ogDescription={notice?.summary || undefined}
+        canonicalPath={slug ? `/notice/${slug}` : "/notice"}
+      />
       <section className="section page-shell">
         <div className="container-medium notice-detail-shell">
           <div className="notice-detail-actions">
