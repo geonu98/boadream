@@ -121,7 +121,13 @@ export default function AboutPage() {
             </article>
 
             <article className="about-mosaic-card about-mosaic-card-visual" aria-hidden="true">
-              <img src="/care-support-illustration.png" alt="" className="about-mosaic-image" />
+              <img
+                src="/care-support-illustration.webp"
+                alt=""
+                className="about-mosaic-image"
+                loading="lazy"
+                decoding="async"
+              />
               <div className="about-mosaic-visual-copy">
                 <span className="about-card-label">Boa Dream Care</span>
                 <strong>편안한 일상에 맞춘 방문 돌봄</strong>

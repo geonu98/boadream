@@ -291,6 +291,7 @@
   .about-premium-hero__wave {
     height: 270px;
   }
+
 }
 
 @media (max-width: 640px) {
@@ -350,6 +351,7 @@
   .about-premium-hero__wave::after {
     height: 44px;
   }
+
 }
 
 /* Codex: remove line graphic above about hero wave */

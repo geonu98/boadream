@@ -15,7 +15,7 @@ const pricingTabs = [
       "상담 후 상세 비용과 절차를 한 번 더 정리",
     ],
     tags: ["본인부담률 안내", "방문요양", "방문목욕", "상세 비용 상담"],
-    image: "/care-support-illustration.png",
+    image: "/care-support-illustration.webp",
     alt: "돌봄 안내를 상징하는 일러스트",
     cardTitle: "이용 금액 안내",
     cardText: "복잡한 기준 대신 실제 이용에 필요한 내용을 차근차근 설명해드립니다.",
@@ -34,7 +34,7 @@ const pricingTabs = [
       "보호자 기준에서 이해하기 쉽게 정리",
     ],
     tags: ["처음 문의", "절차 안내", "비용 설명", "보호자 중심 상담"],
-    image: "/care-support-illustration.png",
+    image: "/care-support-illustration.webp",
     alt: "상담 흐름을 상징하는 일러스트",
     cardTitle: "상담 포인트",
     cardText: "처음 문의하셔도 필요한 내용부터 빠르게 짚어드립니다.",
@@ -53,7 +53,7 @@ const pricingTabs = [
       "대표번호 02-352-0088로 빠른 안내 진행",
     ],
     tags: ["대표번호 02-352-0088", "빠른 확인", "맞춤형 안내", "전화 상담"],
-    image: "/care-support-illustration.png",
+    image: "/care-support-illustration.webp",
     alt: "전화 상담을 상징하는 일러스트",
     cardTitle: "대표 상담",
     cardText: "전화로 가장 빠르게 확인하실 수 있습니다.",
@@ -111,7 +111,7 @@ export default function PricingPage() {
                 </div>
 
                 <div className="step-visual pricing-step-visual">
-                  <img src={currentTab.image} alt={currentTab.alt} />
+                  <img src={currentTab.image} alt={currentTab.alt} loading="lazy" decoding="async" />
                   <div className="glass-mini-card pricing-glass-card pricing-glass-card-static">
                     <h3>{currentTab.cardTitle}</h3>
                     <span>{currentTab.cardText}</span>

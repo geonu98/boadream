@@ -4316,12 +4316,12 @@ body {
 }
 
 .recruit-steps-section {
-  padding-top: 88px;
-  padding-bottom: 120px;
+  padding-top: 64px;
+  padding-bottom: 88px;
 }
 
 .recruit-step-shell {
-  margin-top: 52px;
+  margin-top: 36px;
 }
 
 .recruit-step-panel {
@@ -4351,7 +4351,7 @@ body {
 }
 
 .recruit-step-visual {
-  min-height: 520px;
+  min-height: 420px;
 }
 
 .recruit-glass-card {
@@ -4375,12 +4375,12 @@ body {
 
 @media (max-width: 900px) {
   .recruit-steps-section {
-    padding-top: 64px;
-    padding-bottom: 90px;
+    padding-top: 52px;
+    padding-bottom: 72px;
   }
 
   .recruit-step-visual {
-    min-height: 380px;
+    min-height: 320px;
   }
 
   .recruit-glass-card {
@@ -4543,15 +4543,16 @@ body {
 .service-care-symbol {
   display: grid;
   place-items: center;
-  width: 92px;
-  height: 92px;
-  margin-top: 20px;
-  border-radius: 28px;
-  background: linear-gradient(180deg, rgba(190, 197, 164, 0.2), rgba(213, 199, 173, 0.22));
+  width: 138px;
+  height: 138px;
+  margin: 28px auto 10px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(241, 229, 210, 0.9) 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
 }
 
 .service-care-symbol img {
-  width: 46px;
+  width: 58px;
   opacity: 0.9;
 }
 
@@ -4576,40 +4577,97 @@ body {
   font-size: 0.96rem;
 }
 
+.service-care-card-emotion h3,
+.service-care-card-system h3,
+.service-care-card-emotion p,
+.service-care-card-system p {
+  max-width: 292px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.service-care-card-emotion h3,
+.service-care-card-system h3,
+.service-care-heart-copy strong {
+  font-size: 2.14rem;
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+}
+
+.service-care-card-emotion h3 {
+  margin-top: 42px;
+}
+
+.service-care-card-system h3 {
+  margin-top: 10px;
+}
+
+.service-care-card-emotion .service-care-chip-group {
+  justify-content: center;
+  max-width: 308px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .service-care-heart-copy {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   flex: 1;
+  width: 100%;
+  max-width: 292px;
+  margin: 0 auto;
   text-align: center;
+}
+
+.service-care-heart-badge {
+  display: flex;
+  justify-content: center;
+  width: 170px;
+  margin: 28px auto 10px;
+}
+
+.service-care-heart-icon {
+  display: grid;
+  place-items: center;
+  width: 138px;
+  height: 138px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(244, 224, 205, 0.9) 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
+  color: #d97a42;
+}
+
+.service-care-heart-icon svg {
+  width: 72px;
+  height: 72px;
 }
 
 .service-care-heart-kicker {
   margin: 0;
   color: #8A8E75;
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: -0.01em;
+  min-height: 18px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
 }
 
 .service-care-heart-copy strong {
   display: block;
-  max-width: 280px;
-  margin-top: 22px;
+  max-width: 292px;
+  margin-top: 8px;
   color: #68604D;
-  font-size: 2.55rem;
-  line-height: 1.08;
-  letter-spacing: -0.05em;
 }
 
 .service-care-heart-copy span {
   display: block;
-  max-width: 280px;
-  margin-top: 18px;
+  max-width: 292px;
+  margin-top: 16px;
   color: #68604D;
-  font-size: 1.05rem;
-  line-height: 1.7;
+  font-size: 1.04rem;
+  line-height: 1.68;
 }
 
 .service-care-heart-button {
@@ -4952,6 +5010,196 @@ body {
   text-align: left;
 }
 
+.service-process-flow-shell {
+  margin-top: 44px;
+}
+
+.service-process-flow {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-areas:
+    "step1 step2 step3"
+    "step6 step5 step4";
+  row-gap: 62px;
+  column-gap: 56px;
+  align-items: stretch;
+}
+
+.service-process-flow-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 60px minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+  opacity: 0;
+  transform: translateY(18px) scale(0.985);
+  animation: serviceProcessStepIn 0.62s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.service-process-flow-item:nth-child(1) { grid-area: step1; }
+.service-process-flow-item:nth-child(2) { grid-area: step2; }
+.service-process-flow-item:nth-child(3) { grid-area: step3; }
+.service-process-flow-item:nth-child(4) { grid-area: step4; }
+.service-process-flow-item:nth-child(5) { grid-area: step5; }
+.service-process-flow-item:nth-child(6) { grid-area: step6; }
+
+.service-process-flow-item:nth-child(1) { animation-delay: 0.04s; }
+.service-process-flow-item:nth-child(2) { animation-delay: 0.18s; }
+.service-process-flow-item:nth-child(3) { animation-delay: 0.32s; }
+.service-process-flow-item:nth-child(4) { animation-delay: 0.46s; }
+.service-process-flow-item:nth-child(5) { animation-delay: 0.6s; }
+.service-process-flow-item:nth-child(6) { animation-delay: 0.74s; }
+
+.service-process-flow-number {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #7f8668 0%, #676e52 100%);
+  box-shadow:
+    0 10px 18px rgba(103, 110, 82, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  color: #fffdf8;
+  font-size: 1.48rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.service-process-flow-body {
+  min-height: 138px;
+  padding: 18px 20px 17px;
+  border-radius: 24px;
+  border: 1px solid rgba(104, 96, 77, 0.1);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(250, 245, 238, 0.92) 100%);
+  box-shadow:
+    0 16px 28px rgba(104, 96, 77, 0.1),
+    0 5px 12px rgba(104, 96, 77, 0.05);
+}
+
+.service-process-flow-step {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: rgba(223, 131, 81, 0.12);
+  color: #c7794a;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.service-process-flow-body h3 {
+  margin: 12px 0 0;
+  max-width: 252px;
+  color: #68604d;
+  font-size: 1.14rem;
+  line-height: 1.3;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+.service-process-flow-body p {
+  margin: 10px 0 0;
+  max-width: 260px;
+  color: #7b7461;
+  font-size: 0.84rem;
+  line-height: 1.58;
+  text-wrap: pretty;
+}
+
+.service-process-flow-item:nth-child(1)::after,
+.service-process-flow-item:nth-child(2)::after,
+.service-process-flow-item:nth-child(4)::after,
+.service-process-flow-item:nth-child(5)::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 56px;
+  border-top: 2px solid rgba(132, 140, 107, 0.56);
+}
+
+.service-process-flow-item:nth-child(1)::before,
+.service-process-flow-item:nth-child(2)::before,
+.service-process-flow-item:nth-child(4)::before,
+.service-process-flow-item:nth-child(5)::before {
+  content: "";
+  position: absolute;
+  top: calc(50% - 6px);
+  width: 12px;
+  height: 12px;
+}
+
+.service-process-flow-item:nth-child(1)::after,
+.service-process-flow-item:nth-child(2)::after {
+  right: -45px;
+}
+
+.service-process-flow-item:nth-child(1)::before,
+.service-process-flow-item:nth-child(2)::before {
+  right: -46px;
+  border-top: 2px solid rgba(132, 140, 107, 0.72);
+  border-right: 2px solid rgba(132, 140, 107, 0.72);
+  transform: rotate(45deg);
+}
+
+.service-process-flow-item:nth-child(4)::after,
+.service-process-flow-item:nth-child(5)::after {
+  left: -45px;
+}
+
+.service-process-flow-item:nth-child(4)::before,
+.service-process-flow-item:nth-child(5)::before {
+  left: -46px;
+  border-top: 2px solid rgba(132, 140, 107, 0.72);
+  border-left: 2px solid rgba(132, 140, 107, 0.72);
+  transform: rotate(-45deg);
+}
+
+.service-process-flow-item:nth-child(3)::after {
+  content: "";
+  position: absolute;
+  left: 27px;
+  top: calc(50% + 56px);
+  width: 0;
+  height: 79px;
+  border-left: 2px solid rgba(132, 140, 107, 0.56);
+}
+
+.service-process-flow-item:nth-child(3)::before {
+  content: "";
+  position: absolute;
+  left: 21px;
+  top: calc(50% + 129px);
+  width: 12px;
+  height: 12px;
+  border-right: 2px solid rgba(132, 140, 107, 0.72);
+  border-bottom: 2px solid rgba(132, 140, 107, 0.72);
+  transform: rotate(45deg);
+}
+
+@keyframes serviceProcessStepIn {
+  0% {
+    opacity: 0;
+    transform: translateY(18px) scale(0.985);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-process-flow-item {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
+
 .service-process-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -5003,6 +5251,72 @@ body {
 }
 
 @media (max-width: 900px) {
+  .service-process-flow {
+    grid-template-columns: 1fr;
+    grid-template-areas: none;
+    gap: 20px;
+  }
+
+  .service-process-flow-item {
+    grid-template-columns: 52px minmax(0, 1fr);
+  }
+
+  .service-process-flow-item:nth-child(n) {
+    grid-area: auto;
+  }
+
+  .service-process-flow-number {
+    width: 48px;
+    height: 48px;
+    font-size: 1.28rem;
+  }
+
+  .service-process-flow-body {
+    min-height: 0;
+    padding: 16px 16px 16px 18px;
+    border-radius: 20px;
+  }
+
+  .service-process-flow-body h3 {
+    font-size: 1.02rem;
+  }
+
+  .service-process-flow-body p {
+    font-size: 0.8rem;
+    line-height: 1.52;
+  }
+
+  .service-process-flow-item:nth-child(n)::after {
+    left: 23px;
+    right: auto;
+    top: calc(100% + 2px);
+    width: 2px;
+    height: 20px;
+    border-top: 0;
+    border-right: 2px solid rgba(132, 140, 107, 0.42);
+    border-bottom: 0;
+    border-radius: 0;
+  }
+
+  .service-process-flow-item:nth-child(n):not(:last-child)::before {
+    left: 19px;
+    right: auto;
+    top: auto;
+    bottom: -21px;
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid rgba(132, 140, 107, 0.54);
+    border-bottom: 2px solid rgba(132, 140, 107, 0.54);
+    border-top: 0;
+    border-left: 0;
+    transform: rotate(45deg);
+  }
+
+  .service-process-flow-item:last-child::after,
+  .service-process-flow-item:last-child::before {
+    content: none;
+  }
+
   .service-process-grid,
   .service-verification-grid {
     grid-template-columns: 1fr;
@@ -5220,8 +5534,14 @@ body {
 
 /* Service Brand Gradient Brighten */
 .service-page-title-brand {
-  background-image: linear-gradient(180deg, #D79272 0%, #E8D3B3 100%);
-  text-shadow: 0 3px 10px rgba(215, 146, 114, 0.12);
+  background: none;
+  color: #d97a42;
+  -webkit-text-fill-color: currentColor;
+  text-shadow:
+    0 -1px 0 rgba(255, 250, 242, 0.88),
+    0 1px 0 rgba(255, 214, 190, 0.72),
+    0 2px 0 rgba(194, 111, 62, 0.2),
+    0 10px 18px rgba(217, 122, 66, 0.16);
 }
 
 /* Service Page White Two-Tone Atmosphere */
@@ -8208,9 +8528,10 @@ body {
 }
 
 .service-care-checklist-badge span {
-  font-size: 1.1rem;
+  min-height: 18px;
+  font-size: 0.88rem;
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.06em;
 }
 
 /* Service Included Background Whiten */
@@ -8560,7 +8881,8 @@ main:has(.care-guide-steps-section) + .site-footer-care::before {
     linear-gradient(135deg, rgba(226, 241, 230, 0.14) 0%, rgba(226, 241, 230, 0.04) 26%, rgba(255, 255, 255, 0) 52%),
     linear-gradient(180deg, rgba(248, 247, 243, 0.99) 0%, rgba(243, 241, 236, 0.99) 100%);
 }
-/* Service Card 4 Outline Chips */
+/* Service Card 2, 4 Outline Chips */
+.service-care-card-emotion .service-care-chip-group span,
 .service-care-checks span {
   border: 1.5px solid rgba(223, 131, 81, 0.42);
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(250, 246, 239, 0.94) 100%);
@@ -9204,6 +9526,25 @@ main:has(.care-guide-steps-section) + .site-footer-care::before {
 
   .service-care-heart-copy strong {
     font-size: 2rem;
+  }
+
+  .service-care-symbol {
+    width: 110px;
+    height: 110px;
+  }
+
+  .service-care-symbol img {
+    width: 46px;
+  }
+
+  .service-care-heart-icon {
+    width: 110px;
+    height: 110px;
+  }
+
+  .service-care-heart-icon svg {
+    width: 58px;
+    height: 58px;
   }
 
   .service-care-checklist-icon {
@@ -12637,8 +12978,8 @@ main:has(.care-guide-steps-section) + .site-footer-care::before {
 }
 
 .home-page .section-benefits-editorial {
-  margin-top: -54px;
-  padding-top: 54px;
+  margin-top: -12px;
+  padding-top: 88px;
   background:
     radial-gradient(circle at 12% 16%, rgba(255, 248, 235, 0.78) 0%, rgba(255, 248, 235, 0) 28%),
     radial-gradient(circle at 78% 18%, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 20%),
@@ -12676,8 +13017,8 @@ main:has(.care-guide-steps-section) + .site-footer-care::before {
 
 @media (max-width: 900px) {
   .home-page .section-benefits-editorial {
-    margin-top: -36px;
-    padding-top: 42px;
+    margin-top: -8px;
+    padding-top: 64px;
   }
 }
 
@@ -16273,7 +16614,7 @@ main:has(.care-guide-steps-section) + .site-footer-care::before {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 18px;
-  grid-auto-flow: dense;
+  align-items: stretch;
 }
 
 .about-mosaic-card {
@@ -16285,28 +16626,30 @@ main:has(.care-guide-steps-section) + .site-footer-care::before {
 }
 
 .about-mosaic-card-story {
-  grid-column: 1 / span 7;
-  min-height: 282px;
-  padding: 30px;
+  grid-column: 5 / span 8;
+  min-height: 320px;
+  align-content: center;
+  padding: 34px 38px;
   background:
     radial-gradient(circle at 10% 16%, rgba(239, 194, 137, 0.14) 0%, rgba(239, 194, 137, 0.05) 20%, rgba(239, 194, 137, 0) 40%),
     rgba(255, 252, 247, 0.94);
 }
 
 .about-mosaic-card-story h3 {
-  max-width: 14ch;
-  font-size: 2rem;
-  line-height: 1.18;
+  max-width: 12ch;
+  font-size: 2.5rem;
+  line-height: 1.14;
 }
 
 .about-mosaic-card-story p {
-  max-width: 56ch;
+  max-width: 52ch;
+  font-size: 1rem;
+  line-height: 1.72;
 }
 
 .about-mosaic-card-visual {
-  grid-column: 8 / span 5;
-  grid-row: span 2;
-  min-height: 520px;
+  grid-column: 1 / span 4;
+  min-height: 96px;
   padding: 0;
   background: linear-gradient(180deg, rgba(250, 246, 239, 0.96), rgba(243, 236, 225, 0.96));
 }
@@ -16331,65 +16674,79 @@ main:has(.care-guide-steps-section) + .site-footer-care::before {
 
 .about-mosaic-visual-copy strong {
   color: #30241d;
-  font-size: 1.26rem;
+  font-size: 1.48rem;
   line-height: 1.35;
   letter-spacing: -0.035em;
 }
 
 .about-mosaic-card-info,
 .about-mosaic-card-region {
-  min-height: 220px;
+  min-height: 216px;
+  align-content: start;
 }
 
 .about-mosaic-card-consult {
-  grid-column: 1 / span 4;
+  grid-column: 1 / span 3;
 }
 
 .about-mosaic-card-schedule {
-  grid-column: 5 / span 4;
+  grid-column: 4 / span 3;
 }
 
 .about-mosaic-card-service {
-  grid-column: 1 / span 4;
+  grid-column: 7 / span 3;
 }
 
 .about-mosaic-card-region {
-  grid-column: 5 / span 4;
+  grid-column: 10 / span 3;
 }
 
 .about-mosaic-card-contact {
-  grid-column: 9 / span 4;
-  grid-row: span 2;
-  align-content: start;
-  min-height: 458px;
+  grid-column: 1 / -1;
+  grid-row: auto;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 24px;
+  min-height: 0;
+  padding: 22px 24px;
   background:
     radial-gradient(circle at 86% 12%, rgba(220, 228, 203, 0.42) 0%, rgba(220, 228, 203, 0.1) 24%, rgba(220, 228, 203, 0) 46%),
     rgba(255, 252, 247, 0.94);
 }
 
+.about-mosaic-card-contact > .about-card-label,
+.about-mosaic-card-contact > h3 {
+  grid-column: 1;
+}
+
 .about-mosaic-card-contact h3 {
+  margin-top: 4px;
   font-size: 1.54rem;
   line-height: 1.34;
 }
 
 .about-contact-list {
-  display: grid;
-  gap: 12px;
-  margin: 4px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  align-items: center;
+  margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .about-contact-list li {
-  display: grid;
+  display: inline-grid;
   grid-template-columns: auto minmax(0, 1fr);
   gap: 10px;
-  align-items: start;
+  align-items: center;
   color: #7f8660;
 }
 
 .about-contact-actions {
-  margin-top: auto;
+  margin-top: 0;
+  justify-self: end;
+  align-self: center;
 }
 
 .about-cta-section {
@@ -16455,8 +16812,22 @@ main:has(.care-guide-steps-section) + .site-footer-care::before {
   }
 
   .about-mosaic-card-visual,
-  .about-mosaic-card-contact {
+  .about-mosaic-card-story {
     min-height: 360px;
+  }
+
+  .about-mosaic-card-contact {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .about-contact-list {
+    display: grid;
+    gap: 12px;
+  }
+
+  .about-contact-actions {
+    justify-self: start;
   }
 }
 
@@ -16490,6 +16861,19 @@ main:has(.care-guide-steps-section) + .site-footer-care::before {
 
   .about-hero-lead {
     font-size: 0.95rem;
+  }
+
+  .about-mosaic-card-story {
+    min-height: 0;
+    padding: 24px;
+  }
+
+  .about-mosaic-card-story h3 {
+    font-size: 2rem;
+  }
+
+  .about-mosaic-card-contact {
+    padding: 20px;
   }
 
   .about-hero-visual {
@@ -17240,9 +17624,10 @@ main:has(.care-guide-steps-section) + .site-footer-care::before {
 .home-service-strip-card {
   position: relative;
   display: grid;
+  align-content: start;
   gap: 12px;
-  min-height: 170px;
-  padding: 18px 18px 16px;
+  min-height: 146px;
+  padding: 16px 16px 14px;
   border: 1px solid rgba(204, 190, 167, 0.42);
   border-radius: 24px;
   background: rgba(255, 250, 242, 0.68);
@@ -17253,15 +17638,17 @@ main:has(.care-guide-steps-section) + .site-footer-care::before {
   display: flex;
   align-items: center;
   gap: 12px;
+  min-width: 0;
 }
 
 .home-service-strip-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  flex: 0 0 52px;
-  width: 52px;
-  height: 52px;
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  align-self: start;
   border-radius: 16px;
   background: linear-gradient(180deg, #f1f3ee 0%, #e8ece5 100%);
   color: #7a8f7b;
@@ -17271,19 +17658,22 @@ main:has(.care-guide-steps-section) + .site-footer-care::before {
 
 .home-service-strip-card h3 {
   margin: 0;
+  flex: 1 1 auto;
   color: #241915;
-  font-size: 1.08rem;
+  font-size: 1rem;
   font-weight: 800;
-  line-height: 1.22;
+  line-height: 1.18;
   letter-spacing: -0.04em;
 }
 
 .home-service-strip-card p {
   margin: 0;
   color: rgba(73, 54, 44, 0.76);
-  font-size: 0.93rem;
-  line-height: 1.72;
+  font-size: 0.89rem;
+  line-height: 1.64;
   letter-spacing: -0.02em;
+  text-align: left;
+  text-wrap: pretty;
   word-break: keep-all;
 }
 
@@ -17372,18 +17762,19 @@ main:has(.care-guide-steps-section) + .site-footer-care::before {
 
 /* Codex: widen home service cards after detail block removal */
 .home-service-strip-grid-inline {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
 }
 
 .home-service-strip-card {
-  min-height: 188px;
-  padding: 22px 22px 20px;
+  min-height: 132px;
+  padding: 14px 16px 13px;
+  border-radius: 0;
 }
 
 .home-service-strip-card p {
-  font-size: 0.95rem;
-  line-height: 1.78;
+  font-size: 0.88rem;
+  line-height: 1.58;
 }
 
 @media (max-width: 1080px) {
@@ -17401,6 +17792,7 @@ main:has(.care-guide-steps-section) + .site-footer-care::before {
   .home-service-strip-card {
     min-height: auto;
     padding: 16px 15px 15px;
+    border-radius: 0;
   }
 }
 
@@ -17408,7 +17800,7 @@ main:has(.care-guide-steps-section) + .site-footer-care::before {
 .service-bath-guide-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 28px;
+  gap: 24px;
   align-items: stretch;
 }
 
@@ -17417,8 +17809,8 @@ main:has(.care-guide-steps-section) + .site-footer-care::before {
   display: grid;
   align-content: center;
   justify-items: center;
-  min-height: 360px;
-  padding: 42px 38px 34px;
+  min-height: 306px;
+  padding: 36px 32px 29px;
   border-radius: 999px;
   text-align: center;
   background:
@@ -17432,7 +17824,7 @@ main:has(.care-guide-steps-section) + .site-footer-care::before {
 .service-bath-guide-card::before {
   content: "";
   position: absolute;
-  inset: 18px;
+  inset: 15px;
   border-radius: 999px;
   border: 1px solid rgba(221, 207, 182, 0.32);
   pointer-events: none;
@@ -17444,9 +17836,9 @@ main:has(.care-guide-steps-section) + .site-footer-care::before {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0 16px;
-  min-height: 36px;
-  margin-bottom: 18px;
+  padding: 0 14px;
+  min-height: 32px;
+  margin-bottom: 15px;
   border-radius: 999px;
   background: rgba(231, 225, 208, 0.56);
   color: #8b7a5f;
@@ -17463,17 +17855,17 @@ main:has(.care-guide-steps-section) + .site-footer-care::before {
   max-width: 13ch;
   margin: 0;
   color: #4a4034;
-  font-size: 1.95rem;
+  font-size: 1.66rem;
   line-height: 1.18;
   letter-spacing: -0.045em;
 }
 
 .service-bath-guide-card p {
   max-width: 26ch;
-  margin: 18px 0 0;
+  margin: 15px 0 0;
   color: rgba(92, 78, 65, 0.84);
-  font-size: 1rem;
-  line-height: 1.72;
+  font-size: 0.9rem;
+  line-height: 1.62;
   word-break: keep-all;
 }
 
@@ -17481,10 +17873,14 @@ main:has(.care-guide-steps-section) + .site-footer-care::before {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-top: 18px;
+  margin-top: 15px;
   color: #8a7a63;
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   font-weight: 600;
+}
+
+.service-bath-guide-section .service-process-title {
+  font-size: clamp(2rem, 3.15vw, 2.95rem);
 }
 
 @media (max-width: 1200px) {

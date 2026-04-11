@@ -177,9 +177,33 @@ export default function ServicePage() {
 
             <article className="service-metric-card service-care-card service-care-card-heart">
               <span className="service-care-card-number">03</span>
+              <div className="service-care-heart-badge" aria-hidden="true">
+                <div className="service-care-heart-icon">
+                  <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M32 50C24.8 44.2 14 36.5 14 25.5C14 19.7 18.5 15 24.2 15C28.1 15 31 16.9 32 20.1C33 16.9 35.9 15 39.8 15C45.5 15 50 19.7 50 25.5C50 36.5 39.2 44.2 32 50Z"
+                      stroke="currentColor"
+                      strokeWidth="2.8"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M24 28.5H29L32 23.5L35 33L38 28.5H42"
+                      stroke="currentColor"
+                      strokeWidth="2.6"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </div>
+              </div>
               <div className="service-care-heart-copy">
                 <p className="service-care-heart-kicker">보아드림의 진심</p>
-                <strong>마음까지 돌보는 따뜻한 돌봄</strong>
+                <strong>
+                  마음까지 돌보는
+                  <br />
+                  따뜻한 돌봄
+                </strong>
                 <span>
                   어르신 한 분 한 분을 존중하며,
                   집처럼 편안한 하루가 이어질 수 있도록 함께합니다.
@@ -255,14 +279,21 @@ export default function ServicePage() {
               <span>한눈에 알아보기</span>
             </h2>
           </div>
-          <div className="service-process-grid reveal-up">
-            {serviceSteps.map((item) => (
-              <article key={item.step} className="page-card service-process-card">
-                <span className="page-card-label">{item.step}</span>
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-              </article>
-            ))}
+          <div className="service-process-flow-shell reveal-up">
+            <div className="service-process-flow">
+              {serviceSteps.map((item, index) => (
+                <article key={item.step} className="service-process-flow-item">
+                  <div className="service-process-flow-number" aria-hidden="true">
+                    {index + 1}
+                  </div>
+                  <div className="service-process-flow-body">
+                    <span className="service-process-flow-step">{item.step}</span>
+                    <h3>{item.title}</h3>
+                    <p>{item.description}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </section>

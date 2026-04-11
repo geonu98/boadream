@@ -129,7 +129,7 @@ export default function LongTermCarePage() {
 
             <div className="cgl-hero-right">
               <img
-                src="/hero-care-photo.png"
+                src="/hero-care-photo.webp"
                 alt="요양보호사와 어르신이 장기요양 안내 자료를 함께 살펴보는 모습"
                 className="cgl-image"
               />

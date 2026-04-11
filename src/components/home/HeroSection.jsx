@@ -24,7 +24,13 @@ export default function HeroSection() {
           </div>
 
           <div className="hero-split-media" aria-hidden="true">
-            <img src="/hero-care-photo.png" alt="" className="hero-split-image" />
+            <img
+              src="/hero-care-photo.webp"
+              alt=""
+              className="hero-split-image"
+              fetchPriority="high"
+              decoding="async"
+            />
           </div>
         </div>
       </div>

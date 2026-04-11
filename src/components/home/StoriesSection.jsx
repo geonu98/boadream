@@ -83,9 +83,9 @@ export default function StoriesSection() {
 
   const notices = (noticesQuery.data || []).slice(0, 4);
   const reviews = (reviewsQuery.data || []).slice(0, 4);
-  const reviewItems = useMemo(() => reviews.map((review, index) => ({
+  const reviewItems = useMemo(() => reviews.map((review) => ({
     ...review,
-    cardImageUrl: getReviewImageUrl(review.photo_path) || (index === 0 ? "/hero-care-photo.png" : ""),
+    cardImageUrl: getReviewImageUrl(review.photo_path) || "",
   })), [reviews]);
 
   useEffect(() => {
@@ -195,7 +195,12 @@ export default function StoriesSection() {
                               <div className="home-stories-review-card-main">
                                 <div className="home-stories-review-media">
                                   {imageUrl ? (
-                                    <img src={imageUrl} alt={`${review.author_name}${COPY.reviewImageSuffix}`} />
+                                    <img
+                                      src={imageUrl}
+                                      alt={`${review.author_name}${COPY.reviewImageSuffix}`}
+                                      loading="lazy"
+                                      decoding="async"
+                                    />
                                   ) : (
                                     <span>{initial}</span>
                                   )}

@@ -6,7 +6,12 @@ export default function IntroSection() {
       <div className="container benefit-editorial-shell reveal-up">
         <div className="benefit-editorial-visual">
           <div className="benefit-editorial-image-wrap">
-            <img src="/independence-care-illustration.png" alt="보아드림 자립 지원 일러스트" />
+            <img
+              src="/independence-care-illustration.webp"
+              alt="보아드림 자립 지원 일러스트"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
         </div>
 
