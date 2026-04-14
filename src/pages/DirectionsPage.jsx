@@ -1,5 +1,5 @@
 import SectionTitle from "../components/common/SectionTitle";
-import KakaoDirectionsMap from "../components/directions/KakaoDirectionsMap";
+import NaverDirectionsMap from "../components/directions/NaverDirectionsMap";
 import Seo from "../shared/seo/Seo";
 
 const CENTER_ADDRESS = "서울특별시 은평구 통일로 780 상가동 3층 4호";
@@ -24,7 +24,7 @@ export default function DirectionsPage() {
 
           <div className="directions-layout reveal-up">
             <article className="directions-map-card">
-              <KakaoDirectionsMap />
+              <NaverDirectionsMap />
             </article>
 
             <aside className="directions-info-card">

@@ -9,9 +9,8 @@ export const env = {
   supabaseAnonKey: readEnv("VITE_SUPABASE_ANON_KEY"),
   supabaseStorageBucket: readEnv("VITE_SUPABASE_STORAGE_BUCKET", "site-media"),
   kakaoChannelUrl: readEnv("VITE_KAKAO_CHANNEL_URL"),
-  kakaoMapJavascriptKey: readEnv("VITE_KAKAO_MAP_JS_KEY") || readEnv("VITE_KAKAO_JAVASCRIPT_KEY"),
+  naverMapClientId: readEnv("VITE_NAVER_MAP_CLIENT_ID"),
 };
 
 export const isSupabaseConfigured = Boolean(env.supabaseUrl && env.supabaseAnonKey);
 export const hasKakaoChannelUrl = Boolean(env.kakaoChannelUrl);
-export const hasKakaoMapJavascriptKey = Boolean(env.kakaoMapJavascriptKey);
